@@ -1,0 +1,42 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# ===== Secrets & environment =====
+.env
+.env.local
+.env.*.local
+
+# ===== Generated code / data =====
+# xsdata-generated models (regenerate with `make models`)
+app/fluidefy_models/
+
+# Sample Fluidefy order data (contains real customer data — not shipped)
+/ORDERS-*.xml
+
+# ===== Tooling caches =====
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.log
+
+# ===== IDE / OS =====
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

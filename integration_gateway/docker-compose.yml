@@ -1,0 +1,71 @@
+services:
+  redis:
+    image: redis:8.8-alpine
+    container_name: fluidefy-redis
+    ports:
+      - "6373:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  postgres:
+    image: postgres:18-alpine
+    container_name: fluidefy-postgres
+    environment:
+      POSTGRES_USER: fluidefy
+      POSTGRES_PASSWORD: fluidefy
+      POSTGRES_DB: fluidefy_staging
+    ports:
+      - "5432:5432"
+    volumes:
+      - fluidefy_pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fluidefy -d fluidefy_staging"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    container_name: fluidefy-api
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    environment:
+      DATABASE_URL: postgresql://fluidefy:fluidefy@postgres:5432/fluidefy_staging
+      REDIS_URL: redis://redis:6379/0
+      ODOO_URL: ${ODOO_URL:-http://localhost:8069}
+      ODOO_DB: ${ODOO_DB:-my_odoo_database}
+      ODOO_USERNAME: ${ODOO_USERNAME:-admin}
+      ODOO_APIKEY: ${ODOO_APIKEY:-your_odoo_password_or_api_key}
+      ODOO_SO_TAGS_ID: ${ODOO_SO_TAGS_ID:-0}
+      ODOO_SO_USER_ID: ${ODOO_SO_USER_ID:-0}
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+
+  worker:
+    build: .
+    container_name: fluidefy-worker
+    command: celery -A app.workers.tasks.celery_app worker --loglevel=info
+    environment:
+      DATABASE_URL: postgresql://fluidefy:fluidefy@postgres:5432/fluidefy_staging
+      REDIS_URL: redis://redis:6379/0
+      ODOO_URL: ${ODOO_URL:-http://localhost:8069}
+      ODOO_DB: ${ODOO_DB:-my_odoo_database}
+      ODOO_USERNAME: ${ODOO_USERNAME:-admin}
+      ODOO_APIKEY: ${ODOO_APIKEY:-your_odoo_password_or_api_key}
+      ODOO_SO_TAGS_ID: ${ODOO_SO_TAGS_ID:-0}
+      ODOO_SO_USER_ID: ${ODOO_SO_USER_ID:-0}
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+
+volumes:
+  fluidefy_pgdata:

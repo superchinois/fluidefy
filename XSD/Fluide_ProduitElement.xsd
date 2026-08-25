@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="ISO8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="PRODATS">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UNITE_COMMERCIALE" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UNITE_COMMERCIALE">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCHI" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCDE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCIN" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="UCME" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCPA" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="UCFL" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCDA" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCQU" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCEM" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCM1" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="UCM2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPD" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="UCPR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPM" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCID">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCID_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_TYPE_VERSION" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_ID_EDITEUR_INFORMATION" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_GLN_EDITEUR_INFORMATION" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_NOM_EDITEUR_INFORMATION" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_ID_ARTICLE_DECLARE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_GTIN_ARTICLE_DECLARE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_MARCHE_CIBLE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_MARCHE_CIBLE_PRIVILEGIE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_TYPE_UNITE_COMMERCIALE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCID_ID_FOURNISSEUR_DECLARE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCID_TYPE_NOMENCLATURE_DOUANIERE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCID_CODE_NOMENCLATURE_DOUANIERE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCID_TYPE_PRODUIT_MESURE_VARIABLE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCID_ID_ARTICLE_VARIABLE_PRIX" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCID_ID_ARTICLE_VARIABLE_POIDS" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCID_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCID". -->
+	<xs:element name="UCID_TYPE_VERSION" type="xs:string"/>
+	<!-- Type/Version interface -->
+	<xs:element name="UCID_ID_EDITEUR_INFORMATION" type="xs:string"/>
+	<!-- Code identifiant de l'Editeur de l'information -->
+	<xs:element name="UCID_GLN_EDITEUR_INFORMATION" type="xs:string"/>
+	<!-- GLN de l'Editeur de l'information
+Code lieu-fonction GS1 identifiant le propriétaire unique et créateur de l'information (l'Editeur). Cela peut être, par exemple, un fabricant, un distributeur, un grossiste ou un exportateur (propriétaire ou non de la marque commerciale). Ce code lieu-fonction n'identifie pas la société tierce qui fournit le service de catalogue électronique à l'Editeur. -->
+	<xs:element name="UCID_NOM_EDITEUR_INFORMATION" type="xs:string"/>
+	<!-- Nom de l'Editeur de l'information
+Raison sociale 1 établissement éditeur de l’information -->
+	<xs:element name="UCID_ID_ARTICLE_DECLARE" type="xs:string"/>
+	<!-- Code identifiant article déclaré -->
+	<xs:element name="UCID_GTIN_ARTICLE_DECLARE" type="xs:string"/>
+	<!-- GTIN de l'article déclaré
+Code GS1 de l'unité commerciale de rang immédiatement inférieur contenue dans l'unité commerciale déclarée. Il s'agit du code GTIN 8, GTIN 12, GTIN 13 ou GTIN 14. Pour arriver à une longueur totale de 14 positions, les codes GTIN 8, GTIN 12 ou GTIN 13 doivent être complétés à gauche par respectivement 6, 2 ou 1 caractère "0" (zéro). -->
+	<xs:element name="UCID_MARCHE_CIBLE" type="xs:string"/>
+	<!-- Marché Cible
+Code indiquant le pays dans lequel l'unité commerciale déclarée est disponible aux acheteurs (liste ISO 3166-1, 3 caractères numériques. Exemple : 250 = France). Ce code ne régit pas la zone dans laquelle l'acheteur peut vendre l'unité commerciale aux consommateurs. -->
+	<xs:element name="UCID_MARCHE_CIBLE_PRIVILEGIE" type="xs:string"/>
+	<!-- Marché Cible privilégié : Oui/Non -->
+	<xs:element name="UCID_TYPE_UNITE_COMMERCIALE" type="xs:string"/>
+	<!-- Type d'unité commerciale
+Indication du niveau hiérarchique de l'unité commerciale. -->
+	<xs:element name="UCID_ID_FOURNISSEUR_DECLARE" type="xs:string"/>
+	<!-- Code du produit chez le Fournisseur (Code fournisseur de l'article déclaré)
+Code d'identification complémentaire attribué par le fournisseur de l'unité commerciale déclarée. Ce code ne remplace pas le GTIN qui reste obligatoire. -->
+	<xs:element name="UCID_TYPE_NOMENCLATURE_DOUANIERE" type="xs:string"/>
+	<!-- Type de nomenclature douanière
+Code indiquant le type de classification douanière pour l'unité commerciale déclarée. -->
+	<xs:element name="UCID_CODE_NOMENCLATURE_DOUANIERE" type="xs:string"/>
+	<!-- Code de nomenclature douanière
+Numéro de tarif douanier. -->
+	<xs:element name="UCID_TYPE_PRODUIT_MESURE_VARIABLE" type="xs:string"/>
+	<!-- Type de produit à mesure variable  -->
+	<xs:element name="UCID_ID_ARTICLE_VARIABLE_PRIX" type="xs:string"/>
+	<!-- Identifiant article poids variable (Prix)
+Identifiant, sur 7 positions en France, de l’unité commerciale (de type unité consommateur) à poids variable dans un code poids variable contenant le prix de l'unité commerciale (commerce de détail). -->
+	<xs:element name="UCID_ID_ARTICLE_VARIABLE_POIDS" type="xs:string"/>
+	<!-- Identifiant article poids variable (Poids)
+Identifiant, sur 7 positions en France, de l’unité commerciale (de type unité consommateur) à poids variable dans un code poids variable contenant le poids net de l'unité commerciale  -->
+	<xs:element name="UCHI">
+		<!-- Obligatoire dans le cas d'une Unité Logistique -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCHI_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCHI_NBRE_COUCHES_RANG_INF" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCHI_NBRE_ART_RANG_INF_PAR_COUCHE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCHI_NBRE_SOUS_COND_NON_GTIN" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCHI_NBRE_ART_RANG_INF_PAR_SOUS_COND" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCHI_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCHI". -->
+	<xs:element name="UCHI_NBRE_COUCHES_RANG_INF" type="xs:string"/>
+	<!-- Nombre de couches d'articles de rang inférieur 
+Nombre de couches complètes d'unité commerciale de rang inférieur contenues dans l'unité commerciale déclarée (exemple : si l'unité commerciale déclarée est une palette configurée en 5 couches complètes de 8 cartons de 12 unités consommateur, la valeur correspondante est "5"). -->
+	<xs:element name="UCHI_NBRE_ART_RANG_INF_PAR_COUCHE" type="xs:string"/>
+	<!-- Nombre d'articles de rang inférieur par couche  
+Nombre d'unités commerciales de rang inférieur contenues dans une couche complète de l'unité commerciale déclarée (exemple : si l'unité commerciale déclarée est une palette configurée en 5 couches complètes de 8 cartons de 12 unités consommateur, la valeur correspondante est "8"). -->
+	<xs:element name="UCHI_NBRE_SOUS_COND_NON_GTIN" type="xs:string"/>
+	<!-- Nombre de sous conditionnements non identifiés par un GTIN et de rang inférieur contenues dans l'une unité commerciale déclarée -->
+	<xs:element name="UCHI_NBRE_ART_RANG_INF_PAR_SOUS_COND" type="xs:string"/>
+	<!-- Nombre d'articles de rang inférieur par sous conditionnement 
+Nombre d'unités contenu dans un sous conditionnement non identifié par un GTIN et contenu dans l'unité commerciale déclarée -->
+	<xs:element name="UCDE">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCDE_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCDE_LIBELLE_COURT" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCDE_LIBELLE_FACTURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCDE_LIBELLE_LONG" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCDE_LIBELLE_ETENDU" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCDE_NOM_MARQUE" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCDE_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCDE". -->
+	<xs:element name="UCDE_LIBELLE_COURT" type="xs:string"/>
+	<!-- Libellé court
+Description courte en texte libre (sur 35 caractères maximum) de l'unité commerciale déclarée. Cette description peut être utilisée pour identifier l'unité commerciale au point de vente (tickets de caisse, étiquettes de gondole). Pour assurer la compatibilité entre XML et EANCOM, les utilisateurs pourront choisir de limiter la longueur de ce libellé à 20 caractères.
+Le contenu de ce libellé doit être en accord avec les réglementations en vigueur applicables au produit. -->
+	<xs:element name="UCDE_LIBELLE_FACTURE" type="xs:string"/>
+	<!-- Libellé facture
+Description (sur 35 caractères maximum) de l'unité commerciale déclarée. Cette description peut être utilisée pour identifier l'unité commerciale dans une facture. Cette notion est similaire à la notion de libellé standard identifié dans le langage EANCOM.
+Pour assurer la compatibilité entre XML et EANCOM, les utilisateurs pourront choisir de limiter la longueur de ce libellé à 30 caractères.
+Le contenu de ce libellé doit être en accord avec les dispositions légales en vigueur.
+Exemple : Pour répondre au règlement européen n° 1830/2003, si le produit contient des OGM, la mention « OGM » doit être indiquée à la fin du libellé facture. -->
+	<xs:element name="UCDE_LIBELLE_LONG" type="xs:string"/>
+	<!-- Libellé long
+Description en texte libre (sur 143 caractères maximum) de l'unité commerciale déclarée. Pour assurer la compatibilité entre XML et EANCOM, les utilisateurs pourront choisir de limiter la longueur de ce libellé à 70 caractères.
+Le contenu de ce libellé doit être en accord avec les réglementations en vigueur applicables au produit. -->
+	<xs:element name="UCDE_LIBELLE_ETENDU" type="xs:string"/>
+	<!-- Libellé étendu
+Description longue en texte libre (sur 350 caractères maximum) de l'unité commerciale. Ne peut être utilisé que si l'unité commerciale est une unité consommateur. -->
+	<xs:element name="UCDE_NOM_MARQUE" type="xs:string"/>
+	<!-- Nom de marque
+Nom défini par le propriétaire de la marque commerciale pour identifier des produits ou des services. Ce nom est reconnu par le consommateur final et est indiqué sur l'étiquette apposée sur le produit. Si le produit ou le service n'est pas associé à une marque, indiquer "Sans marque".
+Selon les « Spécifications Générales GS1 », pour un GTIN donné, ce nom doit être le même quelque soit le pays. Si la marque change dans un pays, un nouveau GTIN doit être créé pour le produit.
+Dans les niveaux autres que EA, si l’unité commerciale décrite contient plusieurs marques, au moins une marque devra être indiquée. Cette information sera alors considérée comme non significative. -->
+	<xs:element name="UCIN">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCIN_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCIN_ID_PROPRIETAIRE_MARQUE_COMMERCIALE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCIN_NOM_PROPRIETAIRE_MARQUE_COMMERCIALE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCIN_ID_COMMANDER_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCIN_NOM_COMMANDER_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCIN_ID_LIVRE_PAR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCIN_NOM_LIVRE_PAR" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCIN_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCIN". -->
+	<xs:element name="UCIN_ID_PROPRIETAIRE_MARQUE_COMMERCIALE" type="xs:string"/>
+	<!-- Code identifiant du propriétaire de la marque commerciale
+Code lieu-fonction GS1 identifiant le propriétaire de la marque commerciale de l'unité commerciale déclarée. Peut être différent de l'Editeur (entité qui saisit et maintient les informations dans le catalogue). -->
+	<xs:element name="UCIN_NOM_PROPRIETAIRE_MARQUE_COMMERCIALE" type="xs:string"/>
+	<!-- Nom du propriétaire de la marque commerciale de l'unité commerciale déclarée. -->
+	<xs:element name="UCIN_ID_COMMANDER_A" type="xs:string"/>
+	<!-- Code identifiant du (des) du Commander à
+Code lieu-fonction GS1 identifiant l'entité, chez le fournisseur, qui est habilitée à recevoir les commandes passées par le client relatives à l'unité commerciale déclarée. -->
+	<xs:element name="UCIN_NOM_COMMANDER_A" type="xs:string"/>
+	<!-- Nom du (des) du Commander à
+Nom de l'entité, chez le fournisseur, qui est habilitée à recevoir les commandes passées par le client relatives à l'unité commerciale déclarée. -->
+	<xs:element name="UCIN_ID_LIVRE_PAR" type="xs:string"/>
+	<!-- Code identifiant du (des) Livré par
+Code lieu-fonction GS1 identifiant l'entité, chez le fournisseur, qui est chargée d'effectuer la livraison au client de l'unité commerciale déclarée. -->
+	<xs:element name="UCIN_NOM_LIVRE_PAR" type="xs:string"/>
+	<!-- Nom du (des) Livré par
+Nom de l'entité, chez le fournisseur, qui est chargée d'effectuer la livraison au client de l'unité commerciale déclarée. -->
+	<xs:element name="UCME">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCME_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCME_HAUTEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_HAUTEUR_UNITE_MESURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_LARGEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_LARGEUR_UNITE_MESURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_PROFONDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_PROFONDEUR_UNITE_MESURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_CONTENU_NET" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_CONTENU_NET_UNITE_MESURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_POIDS_NET" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_POIDS_NET_UNITE_MESURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_POIDS_BRUT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_POIDS_BRUT_UNITE_MESURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_POIDS_NET_EGOUTTE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_POIDS_NET_EGOUTTE_UNITE_MESURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_POURCENTAGE_ALCOOL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_TYPE_MESURE_AFFICHAGE_PRIX" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCME_MESURE_AFFICHAGE_PRIX" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCME_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCME". -->
+	<xs:element name="UCME_HAUTEUR" type="xs:string"/>
+	<!-- Hauteur de l'unité commerciale déclarée. Cela correspond à la distance entre les extrémités "haut" et "bas" de l'unité commerciale.
+Pour une palette :
+- les hauteurs du support palette et des éventuels intercalaires sont incluses dans la hauteur totale de la palette
+- la hauteur de la palette n’est pas toujours égale à la somme des hauteurs des cartons et du support (lorsque les cartons ne sont pas disposés sur la palette sur leur base naturelle) -->
+	<xs:element name="UCME_HAUTEUR_UNITE_MESURE" type="xs:string"/>
+	<!-- Code unité de mesure Hauteur   -->
+	<xs:element name="UCME_LARGEUR" type="xs:string"/>
+	<!-- Largeur de l'unité commerciale déclarée :
+- Pour l’unité consommateur, cela correspond à la distance entre les extrémités "gauche" et "droite" de l'unité commerciale telle que théoriquement destinée à être présentée en linéaire.
+- Pour l’unité logistique, cela correspond à sa plus petite dimension horizontale. Par exemple pour une palette 80*120, la largeur est de 800 mm12 et pour une palette 60*80, la largeur est de 600. Il s’agit des dimensions minimales pour une palette sans débord de la charge. En cas de débord de la charge, les dimensions réelles de la charge sont à renseigner dans la fiche produit. -->
+	<xs:element name="UCME_LARGEUR_UNITE_MESURE" type="xs:string"/>
+	<!-- Code unité de mesure Largeur   -->
+	<xs:element name="UCME_PROFONDEUR" type="xs:string"/>
+	<!-- Profondeur de l'unité commerciale déclarée :
+- Pour l’unité consommateur, cela correspond à la distance entre les extrémités "avant" et "arrière" de l'unité commerciale telle que théoriquement destinée à être présentée en linéaire.
+- Pour l’unité logistique, cela correspond à sa plus grande dimension horizontale (synonyme : longueur). Par exemple pour une palette 80*120, la profondeur est de 1200 mm  et pour une palette 60*80, la profondeur est de 800 mm. Il s’agit des dimensions minimales pour une palette standard 80*120, sans débord de la charge. En cas de débord de la charge, les dimensions réelles de la charge sont à renseigner dans la fiche produit. -->
+	<xs:element name="UCME_PROFONDEUR_UNITE_MESURE" type="xs:string"/>
+	<!-- Code unité de mesure Profondeur -->
+	<xs:element name="UCME_CONTENU_NET" type="xs:string"/>
+	<!-- Contenu net
+Quantité (poids net, volume net, nombre de pièces, durée, capacité, …) de produit contenue dans l'unité commerciale déclarée (exemples : 250 grammes, 1.5 litres, 10 pièces, …). Cette quantité est celle indiquée sur l'étiquette apposée sur l'unité commerciale, ceci dans le respect des réglementations en vigueur applicables au produit.
+Le poids net correspond au poids du produit sans les conditionnements associés. -->
+	<xs:element name="UCME_CONTENU_NET_UNITE_MESURE" type="xs:string"/>
+	<!-- Code unité de mesure Contenu net -->
+	<xs:element name="UCME_POIDS_NET" type="xs:string"/>
+	<!-- Poids net de l'unité commerciale déclarée. Le poids net exclut tous les matériaux d'emballage et s'applique à tous les niveaux hiérarchiques
+NB : Poids net d'une palette = somme des poids de remplissage des unités consommateurs. -->
+	<xs:element name="UCME_POIDS_NET_UNITE_MESURE" type="xs:string"/>
+	<!-- Code unité de mesure Poids net -->
+	<xs:element name="UCME_POIDS_BRUT" type="xs:string"/>
+	<!-- Poids brut de l'unité commerciale déclarée incluant l'emballage / le conditionnement. Pour une palette, les poids du support palette et des éventuels intercalaires sont inclus.
+Exemple : Pour une palette = (poids brut du carton x nombre de carton) + poids du support + poids des intercalaires + poids des sur-emballages.
+Les équipements liés à un mode de transport spécifique (sangles, matelas ou housses de protection, …) sont exclus du calcul du poids brut. -->
+	<xs:element name="UCME_POIDS_BRUT_UNITE_MESURE" type="xs:string"/>
+	<!-- Code unité de mesure Poids brut -->
+	<xs:element name="UCME_POIDS_NET_EGOUTTE" type="xs:string"/>
+	<!-- Poids net égoutté de l'unité commerciale déclarée. Cela correspond au poids net après égouttage du liquide utilisé pour son conditionnement, ceci dans le respect des réglementations en vigueur applicables au produit. -->
+	<xs:element name="UCME_POIDS_NET_EGOUTTE_UNITE_MESURE" type="xs:string"/>
+	<!-- Code unité de mesure Poids net égoutté -->
+	<xs:element name="UCME_POURCENTAGE_ALCOOL" type="xs:string"/>
+	<!-- Pourcentage d'alcool par volume -->
+	<xs:element name="UCME_TYPE_MESURE_AFFICHAGE_PRIX" type="xs:string"/>
+	<!-- Type de Mesure / affichage du prix
+Indication du type de mesure utilisé pour l’affichage du prix à l'unité de mesure sur les linéaires notamment, dans un but de comparaison de prix et ceci dans le respect des réglementations en vigueur applicables au produit.
+Utilisé uniquement si le type de mesure est différent de celui utilisé au niveau du contenu net. -->
+	<xs:element name="UCME_MESURE_AFFICHAGE_PRIX" type="xs:string"/>
+	<!-- Mesure / affichage du prix
+Quantité de produit (poids, volume, nombre de pièces, durée, capacité, …) contenue dans l’unité commerciale déclarée. A la différence du contenu net, cette quantité est utilisée pour l’affichage du prix à l'unité de mesure sur les linéaires notamment, dans un but de comparaison de prix et ceci dans le respect des réglementations en vigueur applicables au produit. -->
+	<xs:element name="UCPA">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCPA_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCPA_PAYS_ORIGINE" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCPA_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCPA". -->
+	<xs:element name="UCPA_PAYS_ORIGINE" type="xs:string"/>
+	<!-- Pays d'origine
+Code indiquant le pays dont l'unité commerciale est réputée issue.
+Sont à ce titre, réputées originaires d'un pays, les marchandises entièrement obtenues dans ce pays ou qui ont subi la dernière transformation substantielle, économiquement justifiée, réalisée dans une entreprise équipée à cet effet et ayant abouti à un produit nouveau ou représentant un stade de fabrication important.
+S'il existe plusieurs pays d'origine pour l'unité commerciale, tous les pays d'origine doivent être indiqués. -->
+	<xs:element name="UCFL">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCFL_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCFL_UNITE_DE_BASE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCFL_UNITE_CONSOMMATEUR" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCFL_UNITE_LOGISTIQUE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCFL_UNITE_FACTURABLE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCFL_UNITE_COMMANDABLE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCFL_ART_MESURE_VARIABLE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCFL_ART_PROMO_CONSOMMATEUR" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCFL_ART_SAISONNIER" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCFL_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCFL". -->
+	<xs:element name="UCFL_UNITE_DE_BASE" type="xs:string"/>
+	<!-- Unité de base (oui / non)
+Indication que l'unité commerciale déclarée est une unité de base (oui ou non), c'est à dire l'unité de plus bas niveau dans la hiérarchie décrite.
+Par défaut, le type "unité de base (UB)" s'applique au même niveau hiérarchique que le type "unité consommateur (UC)", c'est à dire au niveau le plus bas. Cependant, il n'existe qu'une seule UB par hiérarchie alors qu'il peut exister plusieurs UC.
+Exemple, un lot consommateur est une UC mais n'est pas une UB. Par contre, les composantes d'un lot consommateur peuvent être à la fois des UB et des UC. -->
+	<xs:element name="UCFL_UNITE_CONSOMMATEUR" type="xs:string"/>
+	<!-- Unité consommateur (oui / non)
+Indication que l'unité commerciale déclarée est une unité consommateur (oui ou non). -->
+	<xs:element name="UCFL_UNITE_LOGISTIQUE" type="xs:string"/>
+	<!-- Unité logistique (oui / non)
+Indication que l'unité commerciale déclarée est une unité logistique (oui ou non). -->
+	<xs:element name="UCFL_UNITE_FACTURABLE" type="xs:string"/>
+	<!-- Unité facturable (oui / non)
+Indication que l'unité commerciale déclarée est une unité facturable (oui ou non), c'est à dire que son GTIN peut apparaître dans la ligne d'une facture (segment LIN en EANCOM). -->
+	<xs:element name="UCFL_UNITE_COMMANDABLE" type="xs:string"/>
+	<!-- Unité commandable (oui / non)
+Indication que l'unité commerciale déclarée est une unité commandable (oui ou non), c'est à dire que son GTIN peut apparaître dans la ligne d'une commande (segment LIN en EANCOM). -->
+	<xs:element name="UCFL_ART_MESURE_VARIABLE" type="xs:string"/>
+	<!-- Article à mesure variable (oui / non)
+Indication que l'unité commerciale déclarée est une unité commerciale à quantité variable telle que par exemple poids, longueur ou volume variable (oui ou non) -->
+	<xs:element name="UCFL_ART_PROMO_CONSOMMATEUR" type="xs:string"/>
+	<!-- Produit promotion consommateur (oui / non)
+Indique si l’unité commerciale déclarée est une promotion consommateur ou un produit standard (Oui = promotion consommateur). Une promotion consommateur est une modification temporaire de l'unité commerciale changeant de façon évidente la présentation du produit. Elle est décidée par le fournisseur au bénéfice du consommateur. -->
+	<xs:element name="UCFL_ART_SAISONNIER" type="xs:string"/>
+	<!-- Article Saisonnier (oui/non)
+Indique si l'unité commerciale déclarée est un article saisonnier. Un article saisonnier n'est disponible pour le consommateur qu'à une période de l'année définie. -->
+	<xs:element name="UCDA">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCDA_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCDA_DATE_DEB_VALIDITE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCDA_DATE_FIN_VALIDITE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCDA_DATE_DEBUT_DISPO_COMMANDE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCDA_DATE_ANNULATION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCDA_DELAI_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCDA_DATE_CREATION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCDA_DATE_MODIFICATION" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCDA_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCDA". -->
+	<xs:element name="UCDA_DATE_DEB_VALIDITE" type="xs:string"/>
+	<!-- Date de début de validité de la fiche produit
+Date à partir de laquelle l'information contenue dans la fiche produit est valide. Cette date s'applique à la création de la fiche produit ou à la modification. -->
+	<xs:element name="UCDA_DATE_FIN_VALIDITE" type="xs:string"/>
+	<!-- Date de fin de validité de la fiche produit -->
+	<xs:element name="UCDA_DATE_DEBUT_DISPO_COMMANDE" type="xs:string"/>
+	<!-- Date de début de disponibilité à la commande
+Date à partir de laquelle l'unité commerciale déclarée est disponible à la commande. -->
+	<xs:element name="UCDA_DATE_ANNULATION" type="xs:string"/>
+	<!-- Date d'annulation (nouveau produit non commercialisé)
+Date à laquelle le lancement d'une nouvelle unité commerciale est annulée (unité commerciale créée mais non commercialisée). Cette information permet la réutilisation du GTIN 12 mois après la date d'annulation. -->
+	<xs:element name="UCDA_DELAI_LIVRAISON" type="xs:string"/>
+	<!-- Délai de livraison -->
+	<xs:element name="UCDA_DATE_CREATION" type="xs:string"/>
+	<!-- Date/Heure de création. Date générée par le système à la création de l'article. Non saisie par le fournisseur. -->
+	<xs:element name="UCDA_DATE_MODIFICATION" type="xs:string"/>
+	<!-- Date/Heure de dernière modification. Date générée par le système à la dernière modification de l'article. Non saisie par le fournisseur. -->
+	<xs:element name="UCQU">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCQU_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCQU_MINIMUM_COMMANDE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCQU_MULTIPLE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCQU_UNITE_MESURE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCQU_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCQU". -->
+	<xs:element name="UCQU_MINIMUM_COMMANDE" type="xs:string"/>
+	<!-- Minimum de commande
+Quantité minimale de l'unité commerciale déclarée pouvant être commandée. Cette valeur s'applique à des commandes individuelles. Cette quantité est celle éventuellement décrite dans les CGV ou le tarif du fournisseur. (remplace la notion de PCB) -->
+	<xs:element name="UCQU_MULTIPLE_COMMANDE" type="xs:string"/>
+	<!-- Multiple de commande
+Multiple de quantité de commande exprimé pour l'unité commerciale déclarée. Si le minimum de commande est de 100 unités et le multiple de commande est de 20 unités, alors l’unité commerciale déclarée ne peut-être commandée qu’en quantité multiple de 20 unités, à partir de 100 unités : 100, 120, 140, 160, … Cette quantité est celle éventuellement décrite dans les CGV ou le tarif du fournisseur. (remplace la notion de PCB) -->
+	<xs:element name="UCQU_UNITE_MESURE_COMMANDE" type="xs:string"/>
+	<!-- Unité de mesure utilisée pour la Commande -->
+	<xs:element name="UCEM">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCEM_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCEM_TYPE_EMBALLAGE_CONDITIONNEMENT" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCEM_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCEM". -->
+	<xs:element name="UCEM_TYPE_EMBALLAGE_CONDITIONNEMENT" type="xs:string"/>
+	<!-- Type d'emballage / conditionnement
+Indication du type de conditionnement / emballage (exemple : bouteille verre, carton, roll, palette, …). -->
+	<xs:element name="UCM1">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCM1_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCM1_CODE_INSTRUCTIONS_MANUTENTION" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCM1_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCM1". -->
+	<xs:element name="UCM1_CODE_INSTRUCTIONS_MANUTENTION" type="xs:string"/>
+	<!-- Instructions de manutention (code)
+Utilisation du code uniquement. -->
+	<xs:element name="UCM2">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCM2_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCM2_DUREE_VIE_PRODUIT_A_DATE_PRODUCTION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCM2_TEMPERATURE_MAX" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCM2_TEMPERATURE_MIN" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCM2_TEMPERATURE_MAX_UNITE_MESURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCM2_TEMPERATURE_MIN_UNITE_MESURE" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCM2_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCM2". -->
+	<xs:element name="UCM2_DUREE_VIE_PRODUIT_A_DATE_PRODUCTION" type="xs:string"/>
+	<!-- Durée de vie du produit à partir de la date de production
+En nombre de jour. -->
+	<xs:element name="UCM2_TEMPERATURE_MAX" type="xs:string"/>
+	<!-- Température maximale de stockage
+Température min < température max. -->
+	<xs:element name="UCM2_TEMPERATURE_MIN" type="xs:string"/>
+	<!-- Température minimale de stockage
+Température min < température max. -->
+	<xs:element name="UCM2_TEMPERATURE_MAX_UNITE_MESURE" type="xs:string"/>
+	<!-- Code unité de mesure de la température maximale de stockage -->
+	<xs:element name="UCM2_TEMPERATURE_MIN_UNITE_MESURE" type="xs:string"/>
+	<!-- Code unité de mesure de la température minimale de stockage -->
+
+	<xs:element name="UCPD">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCPD_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCPD_CLASSE_DANGER" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCPD_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCPD". -->
+	<xs:element name="UCPD_CLASSE_DANGER" type="xs:string"/>
+	<!-- Classe de danger (transport)
+Classification de danger pour le transport des marchandises dangereuses. 9 classes ont été définies, certaines étant divisées en sous-classes. Le numéro de « classe » indique la nature et les propriétés des marchandises et permet d’établir un classement en terme de niveau de risque. -->
+	<xs:element name="UCPR">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCPR_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCPR_PRIX_CATALOGUE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_PRIX_CATALOGUE_DEVISE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_DATE_DEB_VALIDITE_PRIX_CATALOGUE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_DATE_FIN_VALIDITE_PRIX_CATALOGUE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_TYPE_TAXE_CODE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_TYPE_TAXE_LIBELLE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_TAUX_TAXE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_MONTANT_TAXE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_MONTANT_TAXE_CODE_DEVISE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_CODE_DROITS_ACCISES" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCPR_PAIEMENT_DROITS_ACCISES" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCPR_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCPR". -->
+	<xs:element name="UCPR_PRIX_CATALOGUE" type="xs:string"/>
+	<!-- Prix catalogue -->
+	<xs:element name="UCPR_PRIX_CATALOGUE_DEVISE" type="xs:string"/>
+	<!-- Code devise Prix catalogue -->
+	<xs:element name="UCPR_DATE_DEB_VALIDITE_PRIX_CATALOGUE" type="xs:string"/>
+	<!-- Date de début de validité du prix catalogue
+Date à partir de laquelle le prix catalogue est valide pour l'unité commerciale déclarée. Le fait qu'aucune date de fin de validité ne soit communiquée signifie que le prix catalogue est valide jusqu'à nouvel ordre. -->
+	<xs:element name="UCPR_DATE_FIN_VALIDITE_PRIX_CATALOGUE" type="xs:string"/>
+	<!-- Date de fin de validité du prix catalogue
+Date après laquelle  le prix catalogue n'est plus valide pour l'unité commerciale déclarée. Le fait qu'aucune date de fin de validité ne soit communiquée signifie que le prix catalogue est valide jusqu'à nouvel ordre. -->
+	<xs:element name="UCPR_TYPE_TAXE_CODE" type="xs:string"/>
+	<!-- Type de taxe (code)
+Indication du type de taxe, droit ou redevance applicable à l'unité commerciale déclarée. -->
+	<xs:element name="UCPR_TYPE_TAXE_LIBELLE" type="xs:string"/>
+	<!-- Type de taxe (Libellé)
+Libellé correspondant au code "Type de taxe". -->
+	<xs:element name="UCPR_TAUX_TAXE" type="xs:string"/>
+	<!-- Taux de taxe, droit ou redevance applicable à l'unité commerciale déclarée (utilisé uniquement si la taxe, le droit ou la redevance s'exprime en pourcentage). -->
+	<xs:element name="UCPR_MONTANT_TAXE" type="xs:string"/>
+	<!-- Montant de taxe, droit ou redevance applicable à l'unité commerciale déclarée (utilisé uniquement si la taxe, le droit ou la redevance s'exprime en montant). -->
+	<xs:element name="UCPR_MONTANT_TAXE_CODE_DEVISE" type="xs:string"/>
+	<!-- Code devise Montant de taxe -->
+	<xs:element name="UCPR_CODE_DROITS_ACCISES" type="xs:string"/>
+	<!-- Code droits d'accises
+Code permettant de faire le lien entre un produit alcoolique et sa catégorie fiscale d'appartenance (et donc les droits auquel il est soumis). -->
+	<xs:element name="UCPR_PAIEMENT_DROITS_ACCISES" type="xs:string"/>
+	<!-- Paiement des droits d'accises
+Indication si les droits d'accises 1/ sont à payer par le distributeur (droits en suspension) ou 2/ ont déjà été payés par le vendeur et sont inclus dans le prix de vente (droits acquittés). -->
+	<xs:element name="UCPM">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCPM_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCPM_INFOS_PROMOTIONNELLES" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCPM_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCPM". -->
+	<xs:element name="UCPM_INFOS_PROMOTIONNELLES" type="xs:string"/>
+	<!-- Informations promotionnelles sur le produit
+Indication des informations relatives à l'offre promotionnelle (consommateur ou distributeur) présentes sur le conditionnement de l'unité commerciale. Exemples : 20 % gratuit, cadeau gratuit. -->
+	<xs:element name="UCFA">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UCFA_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="UCFA_DATE_DEB_PRODUIT_NOUVEAU" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_DUREE_PRODUIT_NOUVEAU" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_DATE_DEB_RUPTURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_DATE_FIN_RUPTURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_DATE_ARRET" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_GESTION_HIERARCHIE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_PCB" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_NBRE_UC_DANS_PALETTE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_NBRE_UC_DANS_COUCHE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_ULA" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="UCFA_MULTIPLE_ULA" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UCFA_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "UCFA". -->
+	<xs:element name="UCFA_DATE_DEB_PRODUIT_NOUVEAU" type="xs:string"/>
+	<!-- Date de début produit nouveau
+Date à partir de laquelle le produit est considéré comme nouveau -->
+	<xs:element name="UCFA_DUREE_PRODUIT_NOUVEAU" type="xs:string"/>
+	<!-- Durée produit nouveau en jours
+Durée pendant laquelle le produit est considéré comme nouveau -->
+	<xs:element name="UCFA_DATE_DEB_RUPTURE" type="xs:string"/>
+	<!-- Date de début de la rupture -->
+	<xs:element name="UCFA_DATE_FIN_RUPTURE" type="xs:string"/>
+	<!-- Date de fin de la rupture -->
+	<xs:element name="UCFA_DATE_ARRET" type="xs:string"/>
+	<!-- Date d’arrêt
+Date à partir de laquelle le produit est arrêté -->
+	<xs:element name="UCFA_GESTION_HIERARCHIE" type="xs:string"/>
+	<!-- Gestion de la hiérarchie
+Nombre d’UC dans la couche ou palette déduite de la hiérarchie -->
+	<xs:element name="UCFA_PCB" type="xs:string"/>
+	<!-- PCB (Par ComBien)
+Nombre d'unité consommateur contenant dans l'unité élémentaire d'approvisionnement -->
+	<xs:element name="UCFA_NBRE_UC_DANS_PALETTE" type="xs:string"/>
+	<!-- Nombre d'UC dans la palette (si pas déduite de la hiérarchie) -->
+	<xs:element name="UCFA_NBRE_UC_DANS_COUCHE" type="xs:string"/>
+	<!-- Nombre d'UC dans la couche (si pas déduite de la hiérarchie) -->
+	<xs:element name="UCFA_ULA" type="xs:string"/>
+	<!-- Unité Logistique d’Approvisionnement
+Est une ULA ? -->
+	<xs:element name="UCFA_MULTIPLE_ULA" type="xs:string"/>
+	<!-- Multiple ULA
+Multiplicité de cette ULA -->
+</xs:schema>

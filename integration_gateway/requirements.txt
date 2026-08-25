@@ -1,0 +1,11 @@
+fastapi>=0.110.0
+uvicorn>=0.28.0
+celery>=5.3.6
+redis>=5.0.3
+psycopg2-binary>=2.9.9
+sqlalchemy>=2.0.28
+pydantic>=2.6.4
+pydantic-settings>=2.2.1
+xsdata[cli]>=24.5
+lxml>=5.2.0
+git+https://github.com/superchinois/odoo_client.git@v1.0.2#egg=odoo_client

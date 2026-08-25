@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="PRODATS"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="UNITE_COMMERCIALE" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="UNITE_COMMERCIALE"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="UCRF" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="UCRF"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="UCRF_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCRF_TYPE_VERSION" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCRF_ID_EDITEUR_INFORMATION" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCRF_ID_ARTICLE_DECLARE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCRF_MARCHE_CIBLE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCRF_ID_ETABLISSEMENT_REFERENCE" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="UCRF_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "UCRF". -->
+<xs:element name="UCRF_TYPE_VERSION" type="xs:string"/> <!-- Type/Version interface -->
+<xs:element name="UCRF_ID_EDITEUR_INFORMATION" type="xs:string"/> <!-- Code identifiant de l'Editeur de l’information -->
+<xs:element name="UCRF_ID_ARTICLE_DECLARE" type="xs:string"/> <!-- Code identifiant article déclaré -->
+<xs:element name="UCRF_MARCHE_CIBLE" type="xs:string"/> <!-- Marché cible
+Code indiquant le pays dans lequel l'unité commerciale déclarée est disponible aux acheteurs (liste ISO 3166-1, 3 caractères numériques. Exemple : 250 = France). Ce code ne régit pas la zone dans laquelle l'acheteur peut vendre l'unité commerciale aux consommateurs. -->
+<xs:element name="UCRF_ID_ETABLISSEMENT_REFERENCE" type="xs:string"/> <!-- Code identifiant de l'établissement référencé -->
+</xs:schema>

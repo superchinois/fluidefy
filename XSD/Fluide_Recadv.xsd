@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="ISO8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="RECADVS"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="RECADV" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="RECADV"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="ENTETE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="GR_CPS" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="ENTETE"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HGEN" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HDDT" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HREF" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNSU" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNDP" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNSH" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HTDT" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HGEN"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HGEN_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_TYPE_VERSION" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_CODE_EMETTEUR" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_CODE_DESTINATAIRE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_DEMANDE_ACCUSE_RECEPTION" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HGEN_INDICATEUR_TEST" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HGEN_TYPE_MESSAGE_EDI" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_VERSION_MESSAGE_EDI" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_NUMERO_EDITION_EDI" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_AGENCE_CONTROLE_EDI" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_CODE_ASSOCIATION_EDI" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_TYPE_MESSAGE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_NUMERO_MESSAGE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_FONCTION_MESSAGE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HGEN_TYPE_REPONSE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HGEN_STATUT_ACCUSE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HGEN_COMMENTAIRE_ANNULATION" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HGEN_REF_CONTROLE_INTERCHANGE" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HGEN_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "HGEN". -->
+<xs:element name="HGEN_TYPE_VERSION" type="xs:string"/> <!-- Type/version interface -->
+<xs:element name="HGEN_CODE_EMETTEUR" type="xs:string"/> <!-- Edifact : code émetteur de l'interchange CODE GLN (EAN) DU SIEGE DE DISTRIBUTEUR -->
+<xs:element name="HGEN_CODE_DESTINATAIRE" type="xs:string"/> <!-- Edifact : code destinataire de l'interchange CODE GLN (EAN) DU SIEGE DU FOURNISSEUR -->
+<xs:element name="HGEN_DEMANDE_ACCUSE_RECEPTION" type="xs:string"/> <!-- Edifact  : demande d'accusé de réception syntaxique (CONTRL) -->
+<xs:element name="HGEN_INDICATEUR_TEST" type="xs:string"/> <!-- Indicateur de test ('1'=Test sinon vide) -->
+<xs:element name="HGEN_TYPE_MESSAGE_EDI" type="xs:string"/> <!-- Edifact : type de message -->
+<xs:element name="HGEN_VERSION_MESSAGE_EDI" type="xs:string"/> <!-- Edifact : version de message -->
+<xs:element name="HGEN_NUMERO_EDITION_EDI" type="xs:string"/> <!-- Edifact : édition du message -->
+<xs:element name="HGEN_AGENCE_CONTROLE_EDI" type="xs:string"/> <!-- Edifact : agence de contrôle -->
+<xs:element name="HGEN_CODE_ASSOCIATION_EDI" type="xs:string"/> <!-- Edifact  : code association -->
+<xs:element name="HGEN_TYPE_MESSAGE" type="xs:string"/> <!-- Type d'accusé de réception de livraison -->
+<xs:element name="HGEN_NUMERO_MESSAGE" type="xs:string"/> <!-- Numéro d'accusé de réception de livraison unique attribué par l'émetteur du document -->
+<xs:element name="HGEN_FONCTION_MESSAGE" type="xs:string"/> <!-- Edifact  : Code indiquant la fonction du message (Original, remplacement, ...) -->
+<xs:element name="HGEN_TYPE_REPONSE" type="xs:string"/> <!-- Edifact : Code indiquant la demande d'un accusé de réception fonctionnel -->
+<xs:element name="HGEN_STATUT_ACCUSE" type="xs:string"/> <!-- Statut de l'accusé. Non saisie par le distributeur. -->
+<xs:element name="HGEN_COMMENTAIRE_ANNULATION" type="xs:string"/> <!-- Commentaire d'annulation de l'accusé. Non saisie par le distributeur. -->
+<xs:element name="HGEN_REF_CONTROLE_INTERCHANGE" type="xs:string"/> <!--  -->
+<xs:element name="HDDT"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HDDT_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HDDT_DATE_HEURE_EMISSION" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HDDT_DATE_HEURE_RECEPTION_MARCHANDISES" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HDDT_DATE_HEURE_REELLE_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HDDT_DATE_HEURE_ENLEVEMENT_CARGAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HDDT_DATE_HEURE_RECEPTION" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HDDT_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "HDDT". -->
+<xs:element name="HDDT_DATE_HEURE_EMISSION" type="xs:string"/> <!-- Date/Heure d'émission de la commande -->
+<xs:element name="HDDT_DATE_HEURE_RECEPTION_MARCHANDISES" type="xs:string"/> <!-- Date/Heure de réception des marchandises -->
+<xs:element name="HDDT_DATE_HEURE_REELLE_LIVRAISON" type="xs:string"/> <!-- Date/heure réelle de livraison -->
+<xs:element name="HDDT_DATE_HEURE_ENLEVEMENT_CARGAISON" type="xs:string"/> <!-- Date/heure d'enlèvement de la cargaison -->
+<xs:element name="HDDT_DATE_HEURE_RECEPTION" type="xs:string"/> <!-- Date/Heure Système (Date/Heure de l'accusé) - Date générée par le système à la création de l'accusé. Non saisie par le distributeur. -->
+<xs:element name="HREF"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HREF_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HREF_NO_COMMANDE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HREF_DATE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HREF_NO_REPONSE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HREF_DATE_REPONSE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HREF_NO_AVIS_EXPEDITION" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HREF_DATE_AVIS_EXPEDITION" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HREF_NO_AVIS_RECEPTION" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HREF_DATE_AVIS_RECEPTION" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HREF_NO_REFERENCE_CLIENT" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HREF_DATE_REFERENCE_CLIENT" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HREF_NO_BON_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HREF_DATE_BON_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HREF_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "HREF". -->
+<xs:element name="HREF_NO_COMMANDE" type="xs:string"/> <!-- Numéro de commande -->
+<xs:element name="HREF_DATE_COMMANDE" type="xs:string"/> <!-- Date de la commande -->
+<xs:element name="HREF_NO_REPONSE_COMMANDE" type="xs:string"/> <!-- Numéro de réponse à la commande -->
+<xs:element name="HREF_DATE_REPONSE_COMMANDE" type="xs:string"/> <!-- Date de la réponse à la commande -->
+<xs:element name="HREF_NO_AVIS_EXPEDITION" type="xs:string"/> <!-- Numéro d'avis d'expédition -->
+<xs:element name="HREF_DATE_AVIS_EXPEDITION" type="xs:string"/> <!-- Date de l'avis d'expédition -->
+<xs:element name="HREF_NO_AVIS_RECEPTION" type="xs:string"/> <!-- Numéro d'avis de réception -->
+<xs:element name="HREF_DATE_AVIS_RECEPTION" type="xs:string"/> <!-- Date de l'avis de réception -->
+<xs:element name="HREF_NO_REFERENCE_CLIENT" type="xs:string"/> <!-- Numéro de référence attribué par le client -->
+<xs:element name="HREF_DATE_REFERENCE_CLIENT" type="xs:string"/> <!-- Date de la référence attribuée par le client -->
+<xs:element name="HREF_NO_BON_LIVRAISON" type="xs:string"/> <!-- Numéro du bon de livraison -->
+<xs:element name="HREF_DATE_BON_LIVRAISON" type="xs:string"/> <!-- Date du bon de livraison -->
+<xs:element name="HNBY"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HNBY_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNBY_CODE_ACHETEUR" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNBY_TABLE_CODE_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_RAISON_SOCIALE_1_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_RAISON_SOCIALE_2_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_RAISON_SOCIALE_3_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_RAISON_SOCIALE_4_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_RAISON_SOCIALE_5_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_ADRESSE_1_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_ADRESSE_2_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_ADRESSE_3_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_ADRESSE_4_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_VILLE_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_ETAT_REGION_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_CODE_POSTAL_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_PAYS_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_CODE_INTERNE_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_NO_TVA_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_NO_SIREN_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_NO_SERVICE_COMMERCIAL_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_CONTACT_INFORMATION_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_NOM_CONTACT_INFORMATION_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_TEL_CONTACT_INFORMATION_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_FAX_CONTACT_INFORMATION_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_EMAIL_CONTACT_INFORMATION_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_NOM_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_TEL_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_FAX_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNBY_EMAIL_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HNBY_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "HNBY". -->
+<xs:element name="HNBY_CODE_ACHETEUR" type="xs:string"/> <!-- Identification de l'acheteur -->
+<xs:element name="HNBY_TABLE_CODE_ACHETEUR" type="xs:string"/> <!-- Type de code identification de l'acheteur -->
+<xs:element name="HNBY_RAISON_SOCIALE_1_ACHETEUR" type="xs:string"/> <!-- Raison sociale de l'acheteur -->
+<xs:element name="HNBY_RAISON_SOCIALE_2_ACHETEUR" type="xs:string"/> <!-- Raison sociale de l'acheteur -->
+<xs:element name="HNBY_RAISON_SOCIALE_3_ACHETEUR" type="xs:string"/> <!-- Raison sociale de l'acheteur -->
+<xs:element name="HNBY_RAISON_SOCIALE_4_ACHETEUR" type="xs:string"/> <!-- Raison sociale de l'acheteur -->
+<xs:element name="HNBY_RAISON_SOCIALE_5_ACHETEUR" type="xs:string"/> <!-- Raison sociale de l'acheteur -->
+<xs:element name="HNBY_ADRESSE_1_ACHETEUR" type="xs:string"/> <!-- Adresse de l'acheteur -->
+<xs:element name="HNBY_ADRESSE_2_ACHETEUR" type="xs:string"/> <!-- Adresse de l'acheteur -->
+<xs:element name="HNBY_ADRESSE_3_ACHETEUR" type="xs:string"/> <!-- Adresse de l'acheteur -->
+<xs:element name="HNBY_ADRESSE_4_ACHETEUR" type="xs:string"/> <!-- Adresse de l'acheteur -->
+<xs:element name="HNBY_VILLE_ACHETEUR" type="xs:string"/> <!-- Ville de l'acheteur -->
+<xs:element name="HNBY_ETAT_REGION_ACHETEUR" type="xs:string"/> <!-- Etat/Région de l'acheteur -->
+<xs:element name="HNBY_CODE_POSTAL_ACHETEUR" type="xs:string"/> <!-- Code postal de l'acheteur -->
+<xs:element name="HNBY_PAYS_ACHETEUR" type="xs:string"/> <!-- Code pays de l'acheteur (ISO 3166) -->
+<xs:element name="HNBY_CODE_INTERNE_ACHETEUR" type="xs:string"/> <!-- Numéro de client interne -->
+<xs:element name="HNBY_NO_TVA_ACHETEUR" type="xs:string"/> <!-- Numéro d'identification TVA -->
+<xs:element name="HNBY_NO_SIREN_ACHETEUR" type="xs:string"/> <!-- N° de SIREN/SIRET -->
+<xs:element name="HNBY_NO_SERVICE_COMMERCIAL_ACHETEUR" type="xs:string"/> <!-- Numéro identifiant le service commercial -->
+<xs:element name="HNBY_CONTACT_INFORMATION_ACHETEUR" type="xs:string"/> <!-- Contact pour information -->
+<xs:element name="HNBY_NOM_CONTACT_INFORMATION_ACHETEUR" type="xs:string"/> <!-- Nom Contact pour information -->
+<xs:element name="HNBY_TEL_CONTACT_INFORMATION_ACHETEUR" type="xs:string"/> <!-- Numéro de téléphone du contact pour information -->
+<xs:element name="HNBY_FAX_CONTACT_INFORMATION_ACHETEUR" type="xs:string"/> <!-- Numéro de fax du contact pour information -->
+<xs:element name="HNBY_EMAIL_CONTACT_INFORMATION_ACHETEUR" type="xs:string"/> <!-- Mail du contact pour information -->
+<xs:element name="HNBY_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" type="xs:string"/> <!-- Contact pour réception marchandises -->
+<xs:element name="HNBY_NOM_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" type="xs:string"/> <!-- Nom Contact pour réception marchandises -->
+<xs:element name="HNBY_TEL_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" type="xs:string"/> <!-- Numéro de téléphone du contact pour réception marchandises -->
+<xs:element name="HNBY_FAX_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" type="xs:string"/> <!-- Numéro de fax du contact pour réception marchandises -->
+<xs:element name="HNBY_EMAIL_CONTACT_RECEPT_MARCHANDISES_ACHETEUR" type="xs:string"/> <!-- Mail du contact pour réception marchandises -->
+<xs:element name="HNSU"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HNSU_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNSU_CODE_FOURNISSEUR" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNSU_TABLE_CODE_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_RS_1_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_RS_2_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_RS_3_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_RS_4_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_RS_5_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_ADR_1_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_ADR_2_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_ADR_3_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_ADR_4_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_VILLE_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_ETAT_REGION_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_CP_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_PAYS_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_CODE_INTERNE_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_NO_TVA_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_NO_SIREN_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_NO_SERVICE_COMMERCIAL_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_CONTACT_INFORMATION_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_NOM_CONTACT_INFORMATION_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_TEL_CONTACT_INFORMATION_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_FAX_CONTACT_INFORMATION_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_EMAIL_CONTACT_INFORMATION_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_NOM_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_TEL_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_FAX_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSU_EMAIL_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HNSU_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "HNSU". -->
+<xs:element name="HNSU_CODE_FOURNISSEUR" type="xs:string"/> <!-- Identification du fournisseur -->
+<xs:element name="HNSU_TABLE_CODE_FOURNISSEUR" type="xs:string"/> <!-- Type de code identification du fournisseur -->
+<xs:element name="HNSU_RS_1_FOURNISSEUR" type="xs:string"/> <!-- Raison sociale du fournisseur -->
+<xs:element name="HNSU_RS_2_FOURNISSEUR" type="xs:string"/> <!-- Raison sociale du fournisseur -->
+<xs:element name="HNSU_RS_3_FOURNISSEUR" type="xs:string"/> <!-- Raison sociale du fournisseur -->
+<xs:element name="HNSU_RS_4_FOURNISSEUR" type="xs:string"/> <!-- Raison sociale du fournisseur -->
+<xs:element name="HNSU_RS_5_FOURNISSEUR" type="xs:string"/> <!-- Raison sociale du fournisseur -->
+<xs:element name="HNSU_ADR_1_FOURNISSEUR" type="xs:string"/> <!-- Adresse du fournisseur -->
+<xs:element name="HNSU_ADR_2_FOURNISSEUR" type="xs:string"/> <!-- Adresse du fournisseur -->
+<xs:element name="HNSU_ADR_3_FOURNISSEUR" type="xs:string"/> <!-- Adresse du fournisseur -->
+<xs:element name="HNSU_ADR_4_FOURNISSEUR" type="xs:string"/> <!-- Adresse du fournisseur -->
+<xs:element name="HNSU_VILLE_FOURNISSEUR" type="xs:string"/> <!-- Ville du fournisseur -->
+<xs:element name="HNSU_ETAT_REGION_FOURNISSEUR" type="xs:string"/> <!-- Etat/Région du fournisseur -->
+<xs:element name="HNSU_CP_FOURNISSEUR" type="xs:string"/> <!-- Code postal du fournisseur -->
+<xs:element name="HNSU_PAYS_FOURNISSEUR" type="xs:string"/> <!-- Code pays du fournisseur (ISO 3166) -->
+<xs:element name="HNSU_CODE_INTERNE_FOURNISSEUR" type="xs:string"/> <!-- Numéro de client interne -->
+<xs:element name="HNSU_NO_TVA_FOURNISSEUR" type="xs:string"/> <!-- Numéro d'identification TVA -->
+<xs:element name="HNSU_NO_SIREN_FOURNISSEUR" type="xs:string"/> <!-- N° de SIREN/SIRET -->
+<xs:element name="HNSU_NO_SERVICE_COMMERCIAL_FOURNISSEUR" type="xs:string"/> <!-- Numéro identifiant le service commercial -->
+<xs:element name="HNSU_CONTACT_INFORMATION_FOURNISSEUR" type="xs:string"/> <!-- Contact pour information -->
+<xs:element name="HNSU_NOM_CONTACT_INFORMATION_FOURNISSEUR" type="xs:string"/> <!-- Nom Contact pour information -->
+<xs:element name="HNSU_TEL_CONTACT_INFORMATION_FOURNISSEUR" type="xs:string"/> <!-- Numéro de téléphone du contact pour information -->
+<xs:element name="HNSU_FAX_CONTACT_INFORMATION_FOURNISSEUR" type="xs:string"/> <!-- Numéro de fax du contact pour information -->
+<xs:element name="HNSU_EMAIL_CONTACT_INFORMATION_FOURNISSEUR" type="xs:string"/> <!-- Mail du contact pour information -->
+<xs:element name="HNSU_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" type="xs:string"/> <!-- Contact pour réception marchandises -->
+<xs:element name="HNSU_NOM_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" type="xs:string"/> <!-- Nom Contact pour réception marchandises -->
+<xs:element name="HNSU_TEL_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" type="xs:string"/> <!-- Numéro de téléphone du contact pour réception marchandises -->
+<xs:element name="HNSU_FAX_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" type="xs:string"/> <!-- Numéro de fax du contact pour réception marchandises -->
+<xs:element name="HNSU_EMAIL_CONTACT_RECEPT_MARCHANDISES_FOURNISSEUR" type="xs:string"/> <!-- Mail du contact pour réception marchandises -->
+<xs:element name="HNDP"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HNDP_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNDP_CODE_LIEU_LIVRAISON" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNDP_TABLE_CODE_LIEU_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_RS_1_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_RS_2_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_RS_3_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_RS_4_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_RS_5_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_ADR_1_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_ADR_2_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_ADR_3_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_ADR_4_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_VILLE_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_ETAT_REGION_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_CODE_POSTAL_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_PAYS_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_CODE_INTERNE_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_NO_TVA_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_NO_SIREN_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_NO_SERVICE_COMMERCIAL_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_CONTACT_INFORMATION_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_NOM_CONTACT_INFORMATION_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_TEL_CONTACT_INFORMATION_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_FAX_CONTACT_INFORMATION_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_EMAIL_CONTACT_INFORMATION_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_NOM_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_TEL_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_FAX_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNDP_EMAIL_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HNDP_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "HNDP". -->
+<xs:element name="HNDP_CODE_LIEU_LIVRAISON" type="xs:string"/> <!-- Identification du lieu de livraison -->
+<xs:element name="HNDP_TABLE_CODE_LIEU_LIVRAISON" type="xs:string"/> <!-- Type de code identification du lieu de livraison -->
+<xs:element name="HNDP_RS_1_LIVRAISON" type="xs:string"/> <!-- Raison sociale du lieu de livraison -->
+<xs:element name="HNDP_RS_2_LIVRAISON" type="xs:string"/> <!-- Raison sociale du lieu de livraison -->
+<xs:element name="HNDP_RS_3_LIVRAISON" type="xs:string"/> <!-- Raison sociale du lieu de livraison -->
+<xs:element name="HNDP_RS_4_LIVRAISON" type="xs:string"/> <!-- Raison sociale du lieu de livraison -->
+<xs:element name="HNDP_RS_5_LIVRAISON" type="xs:string"/> <!-- Raison sociale du lieu de livraison -->
+<xs:element name="HNDP_ADR_1_LIVRAISON" type="xs:string"/> <!-- Adresse du lieu de livraison -->
+<xs:element name="HNDP_ADR_2_LIVRAISON" type="xs:string"/> <!-- Adresse du lieu de livraison -->
+<xs:element name="HNDP_ADR_3_LIVRAISON" type="xs:string"/> <!-- Adresse du lieu de livraison -->
+<xs:element name="HNDP_ADR_4_LIVRAISON" type="xs:string"/> <!-- Adresse du lieu de livraison -->
+<xs:element name="HNDP_VILLE_LIVRAISON" type="xs:string"/> <!-- Ville du lieu de livraison -->
+<xs:element name="HNDP_ETAT_REGION_LIVRAISON" type="xs:string"/> <!-- Etat/Région du lieu de livraison -->
+<xs:element name="HNDP_CODE_POSTAL_LIVRAISON" type="xs:string"/> <!-- Code postal du lieu de livraison -->
+<xs:element name="HNDP_PAYS_LIVRAISON" type="xs:string"/> <!-- Code pays du lieu de livraison (ISO 3166) -->
+<xs:element name="HNDP_CODE_INTERNE_LIVRAISON" type="xs:string"/> <!-- Numéro de client interne -->
+<xs:element name="HNDP_NO_TVA_LIVRAISON" type="xs:string"/> <!-- Numéro d'identification TVA -->
+<xs:element name="HNDP_NO_SIREN_LIVRAISON" type="xs:string"/> <!-- N° de SIREN/SIRET -->
+<xs:element name="HNDP_NO_SERVICE_COMMERCIAL_LIVRAISON" type="xs:string"/> <!-- Numéro identifiant le service commercial -->
+<xs:element name="HNDP_CONTACT_INFORMATION_LIVRAISON" type="xs:string"/> <!-- Contact pour information -->
+<xs:element name="HNDP_NOM_CONTACT_INFORMATION_LIVRAISON" type="xs:string"/> <!-- Nom Contact pour information -->
+<xs:element name="HNDP_TEL_CONTACT_INFORMATION_LIVRAISON" type="xs:string"/> <!-- Numéro de téléphone du contact pour information -->
+<xs:element name="HNDP_FAX_CONTACT_INFORMATION_LIVRAISON" type="xs:string"/> <!-- Numéro de fax du contact pour information -->
+<xs:element name="HNDP_EMAIL_CONTACT_INFORMATION_LIVRAISON" type="xs:string"/> <!-- Mail du contact pour information -->
+<xs:element name="HNDP_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" type="xs:string"/> <!-- Contact pour réception marchandises -->
+<xs:element name="HNDP_NOM_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" type="xs:string"/> <!-- Nom Contact pour réception marchandises -->
+<xs:element name="HNDP_TEL_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" type="xs:string"/> <!-- Numéro de téléphone du contact pour réception marchandises -->
+<xs:element name="HNDP_FAX_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" type="xs:string"/> <!-- Numéro de fax du contact pour réception marchandises -->
+<xs:element name="HNDP_EMAIL_CONTACT_RECEPT_MARCHANDISES_LIVRAISON" type="xs:string"/> <!-- Mail du contact pour réception marchandises -->
+<xs:element name="HNSH"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HNSH_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNSH_CODE_EXPEDITEUR" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNSH_TABLE_CODE_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_RS_1_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_RS_2_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_RS_3_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_RS_4_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_RS_5_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_ADR_1_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_ADR_2_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_ADR_3_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_ADR_4_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_VILLE_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_ETAT_REGION_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_CODE_POSTAL_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_PAYS_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_CODE_INTERNE_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_NO_TVA_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_NO_SIREN_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_NO_SERVICE_INFORMATION_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_CONTACT_INFORMATION_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_NOM_CONTACT_INFORMATION_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_TEL_CONTACT_INFORMATION_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_FAX_CONTACT_INFORMATION_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_EMAIL_CONTACT_INFORMATION_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_NOM_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_TEL_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_FAX_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNSH_EMAIL_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HNSH_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "HNSH". -->
+<xs:element name="HNSH_CODE_EXPEDITEUR" type="xs:string"/> <!-- Identification de l'expéditeur -->
+<xs:element name="HNSH_TABLE_CODE_EXPEDITEUR" type="xs:string"/> <!-- Type de code identification de l'expéditeur -->
+<xs:element name="HNSH_RS_1_EXPEDITEUR" type="xs:string"/> <!-- Raison sociale de l'expéditeur -->
+<xs:element name="HNSH_RS_2_EXPEDITEUR" type="xs:string"/> <!-- Raison sociale de l'expéditeur -->
+<xs:element name="HNSH_RS_3_EXPEDITEUR" type="xs:string"/> <!-- Raison sociale de l'expéditeur -->
+<xs:element name="HNSH_RS_4_EXPEDITEUR" type="xs:string"/> <!-- Raison sociale de l'expéditeur -->
+<xs:element name="HNSH_RS_5_EXPEDITEUR" type="xs:string"/> <!-- Raison sociale de l'expéditeur -->
+<xs:element name="HNSH_ADR_1_EXPEDITEUR" type="xs:string"/> <!-- Adresse de l'expéditeur -->
+<xs:element name="HNSH_ADR_2_EXPEDITEUR" type="xs:string"/> <!-- Adresse de l'expéditeur -->
+<xs:element name="HNSH_ADR_3_EXPEDITEUR" type="xs:string"/> <!-- Adresse de l'expéditeur -->
+<xs:element name="HNSH_ADR_4_EXPEDITEUR" type="xs:string"/> <!-- Adresse de l'expéditeur -->
+<xs:element name="HNSH_VILLE_EXPEDITEUR" type="xs:string"/> <!-- Ville de l'expéditeur -->
+<xs:element name="HNSH_ETAT_REGION_EXPEDITEUR" type="xs:string"/> <!-- Etat/Région de l'expéditeur -->
+<xs:element name="HNSH_CODE_POSTAL_EXPEDITEUR" type="xs:string"/> <!-- Code postal de l'expéditeur -->
+<xs:element name="HNSH_PAYS_EXPEDITEUR" type="xs:string"/> <!-- Code pays de l'expéditeur (ISO 3166) -->
+<xs:element name="HNSH_CODE_INTERNE_EXPEDITEUR" type="xs:string"/> <!-- Numéro de client interne -->
+<xs:element name="HNSH_NO_TVA_EXPEDITEUR" type="xs:string"/> <!-- Numéro d'identification TVA -->
+<xs:element name="HNSH_NO_SIREN_EXPEDITEUR" type="xs:string"/> <!-- N° de SIREN/SIRET -->
+<xs:element name="HNSH_NO_SERVICE_INFORMATION_EXPEDITEUR" type="xs:string"/> <!-- Numéro identifiant le service commercial -->
+<xs:element name="HNSH_CONTACT_INFORMATION_EXPEDITEUR" type="xs:string"/> <!-- Contact pour information -->
+<xs:element name="HNSH_NOM_CONTACT_INFORMATION_EXPEDITEUR" type="xs:string"/> <!-- Nom Contact pour information -->
+<xs:element name="HNSH_TEL_CONTACT_INFORMATION_EXPEDITEUR" type="xs:string"/> <!-- Numéro de téléphone du contact pour information -->
+<xs:element name="HNSH_FAX_CONTACT_INFORMATION_EXPEDITEUR" type="xs:string"/> <!-- Numéro de fax du contact pour information -->
+<xs:element name="HNSH_EMAIL_CONTACT_INFORMATION_EXPEDITEUR" type="xs:string"/> <!-- Mail du contact pour information -->
+<xs:element name="HNSH_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" type="xs:string"/> <!-- Contact pour réception marchandises -->
+<xs:element name="HNSH_NOM_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" type="xs:string"/> <!-- Nom Contact pour réception marchandises -->
+<xs:element name="HNSH_TEL_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" type="xs:string"/> <!-- Numéro de téléphone du contact pour réception marchandises -->
+<xs:element name="HNSH_FAX_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" type="xs:string"/> <!-- Numéro de fax du contact pour réception marchandises -->
+<xs:element name="HNSH_EMAIL_CONTACT_RECEPT_MARCHANDISES_EXPEDITEUR" type="xs:string"/> <!-- Mail du contact pour réception marchandises -->
+<xs:element name="HNUC"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HNUC_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNUC_CODE_CONSIGNATAIRE_FINAL" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HNDP_TABLE_CODE_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_RS_1_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_RS_2_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_RS_3_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_RS_4_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_RS_5_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_ADR_1_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_ADR_2_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_ADR_3_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_ADR_4_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_VILLE_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_ETAT_REGION_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_CODE_POSTAL_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_PAYS_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_CODE_INTERNE_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_NO_TVA_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_NO_SIREN_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_NO_SERVICE_COMMERCIAL_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_NOM_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_TEL_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_FAX_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_EMAIL_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_NOM_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_TEL_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_FAX_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HNUC_EMAIL_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HNUC_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "HNUC". -->
+<xs:element name="HNUC_CODE_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Identification du consignataire final (Livré final) -->
+<xs:element name="HNDP_TABLE_CODE_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Type de code identification du consignataire final -->
+<xs:element name="HNUC_RS_1_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Raison sociale du consignataire final -->
+<xs:element name="HNUC_RS_2_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Raison sociale du consignataire final -->
+<xs:element name="HNUC_RS_3_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Raison sociale du consignataire final -->
+<xs:element name="HNUC_RS_4_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Raison sociale du consignataire final -->
+<xs:element name="HNUC_RS_5_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Raison sociale du consignataire final -->
+<xs:element name="HNUC_ADR_1_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Adresse du consignataire final -->
+<xs:element name="HNUC_ADR_2_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Adresse du consignataire final -->
+<xs:element name="HNUC_ADR_3_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Adresse du consignataire final -->
+<xs:element name="HNUC_ADR_4_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Adresse du consignataire final -->
+<xs:element name="HNUC_VILLE_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Ville du consignataire final -->
+<xs:element name="HNUC_ETAT_REGION_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Etat/Région du consignataire final -->
+<xs:element name="HNUC_CODE_POSTAL_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Code postal du consignataire final -->
+<xs:element name="HNUC_PAYS_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Code pays du consignataire final (ISO 3166) -->
+<xs:element name="HNUC_CODE_INTERNE_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Numéro de client interne -->
+<xs:element name="HNUC_NO_TVA_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Numéro d'identification TVA -->
+<xs:element name="HNUC_NO_SIREN_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- N° de SIREN/SIRET -->
+<xs:element name="HNUC_NO_SERVICE_COMMERCIAL_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Numéro identifiant le service commercial -->
+<xs:element name="HNUC_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Contact pour information -->
+<xs:element name="HNUC_NOM_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Nom Contact pour information -->
+<xs:element name="HNUC_TEL_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Numéro de téléphone du contact pour information -->
+<xs:element name="HNUC_FAX_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Numéro de fax du contact pour information -->
+<xs:element name="HNUC_EMAIL_CONTACT_INFORMATION_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Mail du contact pour information -->
+<xs:element name="HNUC_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Contact pour réception marchandises -->
+<xs:element name="HNUC_NOM_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Nom Contact pour réception marchandises -->
+<xs:element name="HNUC_TEL_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Numéro de téléphone du contact pour réception marchandises -->
+<xs:element name="HNUC_FAX_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Numéro de fax du contact pour réception marchandises -->
+<xs:element name="HNUC_EMAIL_CONTACT_RECEPT_MARCHANDISES_CONSIGNATAIRE_FINAL" type="xs:string"/> <!-- Mail du contact pour réception marchandises -->
+<xs:element name="HTDT"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="HTDT_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HTDT_CODE_TRANSPORTEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HTDT_TABLE_CODE_TRANSPORTEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HTDT_NOM_DU_TRANSPORTEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HTDT_NUMERO_DE_REF_DU_TRANSPORT" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="HTDT_MODE_DE_TRANSPORT" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HTDT_MOYEN_DE_TRANSPORT" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="HTDT_DIRECTION_TRANSIT" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="HTDT_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "HTDT". -->
+<xs:element name="HTDT_CODE_TRANSPORTEUR" type="xs:string"/> <!-- Code identifiant le transporteur -->
+<xs:element name="HTDT_TABLE_CODE_TRANSPORTEUR" type="xs:string"/> <!-- Type de code identifiant le transporteur -->
+<xs:element name="HTDT_NOM_DU_TRANSPORTEUR" type="xs:string"/> <!-- Raison sociale transporteur -->
+<xs:element name="HTDT_NUMERO_DE_REF_DU_TRANSPORT" type="xs:string"/> <!-- Numéro de document transporteur -->
+<xs:element name="HTDT_MODE_DE_TRANSPORT" type="xs:string"/> <!-- Code mode de transport -->
+<xs:element name="HTDT_MOYEN_DE_TRANSPORT" type="xs:string"/> <!-- Code moyen de transport -->
+<xs:element name="HTDT_DIRECTION_TRANSIT" type="xs:string"/> <!-- Code direction du transit -->
+<xs:element name="GR_CPS"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="CPS" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="CPS"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="DCPS" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element ref="GR_LIN" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GR_LIN"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="DLIN" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="DREF" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DPCI" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>			
+<xs:element name="DCPS"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="DCPS_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="DCPS_NO_REF_HIERARCHIE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="DCPS_NO_REF_PERE_HIERARCHIE" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DCPS_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "DCPS". -->
+<xs:element name="DCPS_NO_REF_HIERARCHIE" type="xs:string"/> <!-- Numéro séquentiel de hiérarchie -->
+<xs:element name="DCPS_NO_REF_PERE_HIERARCHIE" type="xs:string"/> <!-- Numéro de référence du père dans la hiérarchie -->
+<xs:element name="DLIN"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="DLIN_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="DLIN_NO_LIGNE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="DLIN_CODE_PRODUIT" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="DLIN_CODE_INTERNE_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_CODE_INTERNE_FOURNISSEUR" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_LIBELLE_ARTICLE_1" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_LIBELLE_ARTICLE_2" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_QTE_RECUE_ACCEPTEE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="DLIN_UM_QTE_RECUE_ACCEPTEE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="DLIN_QTE_COMMANDEE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_UM_QTE_COMMANDEE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_QTE_EXPEDIEE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_UM_QTE_EXPEDIEE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_QTE_LIVREE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_UM_QTE_LIVREE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_QTE_RECUE_NON_ACCEPTEE_A_RETOURNER" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_NAT_QTE_RECUE_NON_ACCEPTEE_A_RETOURNER" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_QTE_RECUE_NON_ACCEPTEE_A_DETRUIRE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_NAT_QTE_RECUE_NON_ACCEPTEE_A_DETRUIRE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_ECART_QTE_COMMANDEE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_NAT_ECART_QTE_COMMANDEE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_ECART_QTE_EXPEDIEE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_NAT_ECART_QTE_EXPEDIEE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_ECART_QTE_LIVREE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DLIN_NAT_ECART_QTE_LIVREE" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DLIN_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "DLIN". -->
+<xs:element name="DLIN_NO_LIGNE" type="xs:string"/> <!-- Numéro séquentiel de ligne d'accusé -->
+<xs:element name="DLIN_CODE_PRODUIT" type="xs:string"/> <!-- GTIN Produit réceptionné -->
+<xs:element name="DLIN_CODE_INTERNE_ACHETEUR" type="xs:string"/> <!-- Code interne produit acheteur -->
+<xs:element name="DLIN_CODE_INTERNE_FOURNISSEUR" type="xs:string"/> <!-- Code interne produit fournisseur -->
+<xs:element name="DLIN_LIBELLE_ARTICLE_1" type="xs:string"/> <!-- Libellé produit 1/2 -->
+<xs:element name="DLIN_LIBELLE_ARTICLE_2" type="xs:string"/> <!-- Libellé produit 2/2 -->
+<xs:element name="DLIN_QTE_RECUE_ACCEPTEE" type="xs:string"/> <!-- Quantité reçue et acceptée -->
+<xs:element name="DLIN_UM_QTE_RECUE_ACCEPTEE" type="xs:string"/> <!-- Code unité de mesure de la quantité reçue et acceptée -->
+<xs:element name="DLIN_QTE_COMMANDEE" type="xs:string"/> <!-- Quantité commandée -->
+<xs:element name="DLIN_UM_QTE_COMMANDEE" type="xs:string"/> <!-- Code unité de mesure de la quantité commandée -->
+<xs:element name="DLIN_QTE_EXPEDIEE" type="xs:string"/> <!-- Quantité expédiée -->
+<xs:element name="DLIN_UM_QTE_EXPEDIEE" type="xs:string"/> <!-- Code unité de mesure de la quantité commandée -->
+<xs:element name="DLIN_QTE_LIVREE" type="xs:string"/> <!-- Quantité livrée (Quantité indiqué sur l'avis d'expédition) -->
+<xs:element name="DLIN_UM_QTE_LIVREE" type="xs:string"/> <!-- Code unité de mesure de la quantité livrée -->
+<xs:element name="DLIN_QTE_RECUE_NON_ACCEPTEE_A_RETOURNER" type="xs:string"/> <!-- Quantité reçue, non acceptée et à retourner -->
+<xs:element name="DLIN_NAT_QTE_RECUE_NON_ACCEPTEE_A_RETOURNER" type="xs:string"/> <!-- Code nature de l'écart pour la quantité reçue, non acceptée et à retourner -->
+<xs:element name="DLIN_QTE_RECUE_NON_ACCEPTEE_A_DETRUIRE" type="xs:string"/> <!-- Quantité reçue, non acceptée et à détruire -->
+<xs:element name="DLIN_NAT_QTE_RECUE_NON_ACCEPTEE_A_DETRUIRE" type="xs:string"/> <!-- Code nature de l'écart pour la quantité reçue, non acceptée et à détruire -->
+<xs:element name="DLIN_ECART_QTE_COMMANDEE" type="xs:string"/> <!-- Ecart sur quantité commandée -->
+<xs:element name="DLIN_NAT_ECART_QTE_COMMANDEE" type="xs:string"/> <!-- Code nature de l'écart sur la quantité commandée -->
+<xs:element name="DLIN_ECART_QTE_EXPEDIEE" type="xs:string"/> <!-- Ecart sur quantité expédiée -->
+<xs:element name="DLIN_NAT_ECART_QTE_EXPEDIEE" type="xs:string"/> <!-- Code nature de l'écart sur la quantité expédiée -->
+<xs:element name="DLIN_ECART_QTE_LIVREE" type="xs:string"/> <!-- Ecart sur quantité livrée -->
+<xs:element name="DLIN_NAT_ECART_QTE_LIVREE" type="xs:string"/> <!-- Code nature de l'écart sur la quantité livrée -->
+<xs:element name="DREF"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="DREF_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="DREF_NO_COMMANDE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_DATE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_NO_REPONSE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_DATE_REPONSE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_NO_AVIS_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_DATE_AVIS_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_NO_AVIS_RECEPTION" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_DATE_AVIS_RECEPTION" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_NO_REFERENCE_CLIENT" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_DATE_REFERENCE_CLIENT" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_NO_BON_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DREF_DATE_BON_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DREF_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "DREF". -->
+<xs:element name="DREF_NO_COMMANDE" type="xs:string"/> <!-- Numéro de commande -->
+<xs:element name="DREF_DATE_COMMANDE" type="xs:string"/> <!-- Date de la commande -->
+<xs:element name="DREF_NO_REPONSE_COMMANDE" type="xs:string"/> <!-- Numéro de réponse à la commande -->
+<xs:element name="DREF_DATE_REPONSE_COMMANDE" type="xs:string"/> <!-- Date de la réponse à la commande -->
+<xs:element name="DREF_NO_AVIS_EXPEDITION" type="xs:string"/> <!-- Numéro d'avis d'expédition -->
+<xs:element name="DREF_DATE_AVIS_EXPEDITION" type="xs:string"/> <!-- Date de l'avis d'expédition -->
+<xs:element name="DREF_NO_AVIS_RECEPTION" type="xs:string"/> <!-- Numéro d'avis de réception -->
+<xs:element name="DREF_DATE_AVIS_RECEPTION" type="xs:string"/> <!-- Date de l'avis de réception -->
+<xs:element name="DREF_NO_REFERENCE_CLIENT" type="xs:string"/> <!-- Numéro de référence attribué par le client -->
+<xs:element name="DREF_DATE_REFERENCE_CLIENT" type="xs:string"/> <!-- Date de la référence attribuée par le client -->
+<xs:element name="DREF_NO_BON_LIVRAISON" type="xs:string"/> <!-- Numéro du bon de livraison -->
+<xs:element name="DREF_DATE_BON_LIVRAISON" type="xs:string"/> <!-- Date du bon de livraison -->
+<xs:element name="DPCI"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="DPCI_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="DPCI_NO_LOT" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DPCI_DLUO" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DPCI_DLC" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="DPCI_QUANTITE" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="DPCI_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "DPCI". -->
+<xs:element name="DPCI_NO_LOT" type="xs:string"/> <!-- Numéro de lot de fabrication -->
+<xs:element name="DPCI_DLUO" type="xs:string"/> <!-- Date limite d'utilisation optimale -->
+<xs:element name="DPCI_DLC" type="xs:string"/> <!-- Date limite de consommation -->
+<xs:element name="DPCI_QUANTITE" type="xs:string"/> <!-- Quantité -->
+</xs:schema>

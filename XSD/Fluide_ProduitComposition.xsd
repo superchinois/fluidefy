@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="PRODATS"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="UNITE_COMMERCIALE" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="UNITE_COMMERCIALE"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="UCCO" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="UCCO"> <!--  -->
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="UCCO_ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCCO_TYPE_VERSION" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCCO_ID_EDITEUR_INFORMATION_COMPOSE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCCO_ID_ARTICLE_DECLARE_COMPOSE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCCO_ID_MARCHE_CIBLE_COMPOSE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCCO_ID_EDITEUR_INFORMATION_COMPOSANT" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCCO_ID_ARTICLE_DECLARE_COMPOSANT" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCCO_ID_MARCHE_CIBLE_COMPOSANT" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="UCCO_QUANTITE_COMPOSANT" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="UCCO_ID" type="xs:string"/> <!-- Identifiant enregistrement. Constante "UCCO". -->
+<xs:element name="UCCO_TYPE_VERSION" type="xs:string"/> <!-- Type/Version interface -->
+<xs:element name="UCCO_ID_EDITEUR_INFORMATION_COMPOSE" type="xs:string"/> <!-- Code identifiant de l'Editeur de l'information du COMPOSE -->
+<xs:element name="UCCO_ID_ARTICLE_DECLARE_COMPOSE" type="xs:string"/> <!-- Code identifiant article COMPOSE déclaré -->
+<xs:element name="UCCO_ID_MARCHE_CIBLE_COMPOSE" type="xs:string"/> <!-- Marché Cible du COMPOSE
+Code indiquant le pays dans lequel l'unité commerciale déclarée est disponible aux acheteurs (liste ISO 3166-1, 3 caractères numériques. Exemple : 250 = France). Ce code ne régit pas la zone dans laquelle l'acheteur peut vendre l'unité commerciale aux consommateurs. -->
+<xs:element name="UCCO_ID_EDITEUR_INFORMATION_COMPOSANT" type="xs:string"/> <!-- Code identifiant de l'Editeur de l'information du COMPOSANT -->
+<xs:element name="UCCO_ID_ARTICLE_DECLARE_COMPOSANT" type="xs:string"/> <!-- Code identifiant article COMPOSANT déclaré -->
+<xs:element name="UCCO_ID_MARCHE_CIBLE_COMPOSANT" type="xs:string"/> <!-- Marché Cible du COMPOSANT
+Code indiquant le pays dans lequel l'unité commerciale déclarée est disponible aux acheteurs (liste ISO 3166-1, 3 caractères numériques. Exemple : 250 = France). Ce code ne régit pas la zone dans laquelle l'acheteur peut vendre l'unité commerciale aux consommateurs. -->
+<xs:element name="UCCO_QUANTITE_COMPOSANT" type="xs:string"/> <!-- Quantité du COMPOSANT -->
+</xs:schema>

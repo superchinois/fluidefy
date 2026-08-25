@@ -1,0 +1,1311 @@
+<?xml version="1.0" encoding="ISO8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="INVOICS">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="INVOIC" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="INVOIC">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ENTETE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="LIGNES" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="PIED" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="ENTETE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HGEN" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HDDT" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HFTX" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="HREF" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNBY" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNSE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNDP" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNSF" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNRE" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNLC" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HALC" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HGEN">
+		<!-- Informations générales du document -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HGEN_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HGEN_TYPE_VERSION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_CODE_EMETTEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_TABLE_CODE_EMETTEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_CODE_DESTINATAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_TABLE_CODE_DESTINATAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_ICR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_DEMANDE_ACC" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_INDICATEUR_TEST" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_TYPE_MESSAGE_EDI" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_VERSION_MESSAGE_EDI" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_NUMERO_EDITION_EDI" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_AGENCE_CONTROLE_EDI" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_CODE_ASSOCIATION_EDI" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_TYPE_MESSAGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_NOM_DOCUMENT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_NUMERO_MESSAGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_FONCTION_MESSAGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_TYPE_REPONSE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_STATUT_FACTURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HGEN_COMMENTAIRE_ANNULATION" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HGEN_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HGEN". -->
+	<xs:element name="HGEN_TYPE_VERSION" type="xs:string"/>
+	<!-- Type/version interface -->
+	<xs:element name="HGEN_CODE_EMETTEUR" type="xs:string"/>
+	<!-- Edifact : code émetteur de l'interchange (GLN recommandé) -->
+	<xs:element name="HGEN_TABLE_CODE_EMETTEUR" type="xs:string"/>
+	<!-- Edifact : type code émetteur de l'interchange -->
+	<xs:element name="HGEN_CODE_DESTINATAIRE" type="xs:string"/>
+	<!-- Edifact : code destinataire de l'interchange (GLN recommandé) -->
+	<xs:element name="HGEN_TABLE_CODE_DESTINATAIRE" type="xs:string"/>
+	<!-- Edifact : type code destinataire de l'interchange -->
+	<xs:element name="HGEN_ICR" type="xs:string"/>
+	<!-- Edifact : référence unique interchange -->
+	<xs:element name="HGEN_DEMANDE_ACC" type="xs:string"/>
+	<!-- Edifact : demande d'accusé de réception syntaxique (CONTRL) -->
+	<xs:element name="HGEN_INDICATEUR_TEST" type="xs:string"/>
+	<!-- Indicateur de test ('1' = test sinon vide) -->
+	<xs:element name="HGEN_TYPE_MESSAGE_EDI" type="xs:string"/>
+	<!-- Edifact : Type de message -->
+	<xs:element name="HGEN_VERSION_MESSAGE_EDI" type="xs:string"/>
+	<!-- Edifact : Version de message -->
+	<xs:element name="HGEN_NUMERO_EDITION_EDI" type="xs:string"/>
+	<!-- Edifact : Edition du message -->
+	<xs:element name="HGEN_AGENCE_CONTROLE_EDI" type="xs:string"/>
+	<!-- Edifact : Agence de contrôle -->
+	<xs:element name="HGEN_CODE_ASSOCIATION_EDI" type="xs:string"/>
+	<!-- Edifact : Code association -->
+	<xs:element name="HGEN_TYPE_MESSAGE" type="xs:string"/>
+	<!-- Edifact : Type de document -->
+	<xs:element name="HGEN_NOM_DOCUMENT" type="xs:string"/>
+	<!-- Edifact : 'V02P01' ou 'V03P01' (* Dématérialisation) -->
+	<xs:element name="HGEN_NUMERO_MESSAGE" type="xs:string"/>
+	<!-- Numéro de document unique attribué par l'émetteur du document -->
+	<xs:element name="HGEN_FONCTION_MESSAGE" type="xs:string"/>
+	<!-- Edifact : code indiquant la fonction du message (Original, duplicata, ...) -->
+	<xs:element name="HGEN_TYPE_REPONSE" type="xs:string"/>
+	<!-- Edifact : code indiquant la demande d'un accusé de réception fonctionnel -->
+	<xs:element name="HGEN_STATUT_FACTURE" type="xs:string"/>
+	<!-- Statut de la facture -->
+	<xs:element name="HGEN_COMMENTAIRE_ANNULATION" type="xs:string"/>
+	<!-- Commentaire d'annulation -->
+	<!--  -->
+	<xs:element name="HDDT">
+		<!-- Dates du document -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HDDT_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HDDT_DATE_HEURE_EMISSION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HDDT_DATE_HEURE_ENLEVEMENT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HDDT_DATE_HEURE_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HDDT_DATE_HEURE_REELLE_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HDDT_PERIODE_FACTURATION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HDDT_DATE_HEURE_SYSTEME" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HDDT_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HDDT". -->
+	<xs:element name="HDDT_DATE_HEURE_EMISSION" type="xs:string"/>
+	<!-- Date/Heure d'émission du document -->
+	<xs:element name="HDDT_DATE_HEURE_ENLEVEMENT" type="xs:string"/>
+	<!-- Date/Heure d'enlèvement (si date de transfert de propriété) -->
+	<xs:element name="HDDT_DATE_HEURE_EXPEDITION" type="xs:string"/>
+	<!-- Date/Heure d'expédition (si date de transfert de propriété) -->
+	<xs:element name="HDDT_DATE_HEURE_REELLE_LIVRAISON" type="xs:string"/>
+	<!-- Date/Heure réelle de livraison (si date de transfert de propriété) -->
+	<xs:element name="HDDT_PERIODE_FACTURATION" type="xs:string"/>
+	<!-- Période de facturation (si facturation périodique) -->
+	<xs:element name="HDDT_DATE_HEURE_SYSTEME" type="xs:string"/>
+	<!-- Date/Heure Système - Date générée par le système à la création du fichier -->
+	<!--  -->
+	<xs:element name="HFTX">
+		<!-- Commentaires s'appliquant à l'ensemble du document -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HFTX_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HFTX_NO_LIGNE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HFTX_QUALIFIANT_COMMENTAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HFTX_COMMENTAIRE_1" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HFTX_COMMENTAIRE_2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HFTX_COMMENTAIRE_3" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HFTX_COMMENTAIRE_4" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HFTX_COMMENTAIRE_5" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HFTX_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HFTX". -->
+	<xs:element name="HFTX_NO_LIGNE" type="xs:string"/>
+	<!-- Numéro séquentiel de ligne de commentaire -->
+	<xs:element name="HFTX_QUALIFIANT_COMMENTAIRE" type="xs:string"/>
+	<!-- Type de commentaire en code -->
+	<xs:element name="HFTX_COMMENTAIRE_1" type="xs:string"/>
+	<!-- Commentaire 1/5 -->
+	<xs:element name="HFTX_COMMENTAIRE_2" type="xs:string"/>
+	<!-- Commentaire 2/5 (* si nécessaire) -->
+	<xs:element name="HFTX_COMMENTAIRE_3" type="xs:string"/>
+	<!-- Commentaire 3/5 (* si nécessaire) -->
+	<xs:element name="HFTX_COMMENTAIRE_4" type="xs:string"/>
+	<!-- Commentaire 4/5 (* si nécessaire) -->
+	<xs:element name="HFTX_COMMENTAIRE_5" type="xs:string"/>
+	<!-- Commentaire 5/5 (* si nécessaire) -->
+	<!--  -->
+	<xs:element name="HREF">
+		<!-- Références du document -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HREF_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HREF_NO_COMMANDE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_DATE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_NO_BL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_DATE_BL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_NO_FACTURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_DATE_FACTURE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_NO_CONTRAT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_DATE_CONTRAT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_NO_DESADV" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_DATE_DESADV" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_NO_TARIF" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_DATE_TARIF" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_NO_RECADV" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HREF_DATE_RECADV" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HREF_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HREF". -->
+	<xs:element name="HREF_NO_COMMANDE" type="xs:string"/>
+	<!-- Numéro de commande client -->
+	<xs:element name="HREF_DATE_COMMANDE" type="xs:string"/>
+	<!-- Date de commande client -->
+	<xs:element name="HREF_NO_BL" type="xs:string"/>
+	<!-- Numéro de bon de livraison -->
+	<xs:element name="HREF_DATE_BL" type="xs:string"/>
+	<!-- Date bon de livraison -->
+	<xs:element name="HREF_NO_FACTURE" type="xs:string"/>
+	<!-- Numéro de facture (* en cas d'avoir) -->
+	<xs:element name="HREF_DATE_FACTURE" type="xs:string"/>
+	<!-- Date de facture (* en cas d'avoir) -->
+	<xs:element name="HREF_NO_CONTRAT" type="xs:string"/>
+	<!-- Numéro de contrat -->
+	<xs:element name="HREF_DATE_CONTRAT" type="xs:string"/>
+	<!-- Date de contrat -->
+	<xs:element name="HREF_NO_DESADV" type="xs:string"/>
+	<!-- Numéro de message Desadv (avis d'expédition) -->
+	<xs:element name="HREF_DATE_DESADV" type="xs:string"/>
+	<!-- Date de message Desadv (avis d'expédition) -->
+	<xs:element name="HREF_NO_TARIF" type="xs:string"/>
+	<!-- Numéro de tarif -->
+	<xs:element name="HREF_DATE_TARIF" type="xs:string"/>
+	<!-- Date de tarif -->
+	<xs:element name="HREF_NO_RECADV" type="xs:string"/>
+	<!-- Numéro de message Recadv (avis de réception) -->
+	<xs:element name="HREF_DATE_RECADV" type="xs:string"/>
+	<!-- Date de message Recadv (avis de réception) -->
+	<!--  -->
+	<xs:element name="HNBY">
+		<!-- Informations acheteur (commandé par) -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HNBY_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNBY_CODE_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_TABLE_CODE_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_RAISON_SOCIALE_1_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_RAISON_SOCIALE_2_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_RAISON_SOCIALE_3_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_RAISON_SOCIALE_4_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_RAISON_SOCIALE_5_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_ADRESSE_1_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_ADRESSE_2_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_ADRESSE_3_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_ADRESSE_4_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_VILLE_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_ETAT_REGION_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_CODE_POSTAL_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_PAYS_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_CODE_INTERNE_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_NO_TVA_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_NO_REF_GOUV_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNBY_NO_ENREG_SOC_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HNBY_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HNBY". -->
+	<xs:element name="HNBY_CODE_ACHETEUR" type="xs:string"/>
+	<!-- Identification de l'acheteur (GLN recommandé) -->
+	<xs:element name="HNBY_TABLE_CODE_ACHETEUR" type="xs:string"/>
+	<!-- Type de code identification de l'acheteur -->
+	<xs:element name="HNBY_RAISON_SOCIALE_1_ACHETEUR" type="xs:string"/>
+	<!-- Raison sociale de l'acheteur (1/5) -->
+	<xs:element name="HNBY_RAISON_SOCIALE_2_ACHETEUR" type="xs:string"/>
+	<!-- Raison sociale de l'acheteur (2/5) (* si nécessaire) -->
+	<xs:element name="HNBY_RAISON_SOCIALE_3_ACHETEUR" type="xs:string"/>
+	<!-- Raison sociale de l'acheteur (3/5) (* si nécessaire) -->
+	<xs:element name="HNBY_RAISON_SOCIALE_4_ACHETEUR" type="xs:string"/>
+	<!-- Raison sociale de l'acheteur (4/5) (* si nécessaire) -->
+	<xs:element name="HNBY_RAISON_SOCIALE_5_ACHETEUR" type="xs:string"/>
+	<!-- Raison sociale de l'acheteur (5/5) (* si nécessaire) -->
+	<xs:element name="HNBY_ADRESSE_1_ACHETEUR" type="xs:string"/>
+	<!-- Adresse de l'acheteur (1/4) -->
+	<xs:element name="HNBY_ADRESSE_2_ACHETEUR" type="xs:string"/>
+	<!-- Adresse de l'acheteur (2/4) (* si nécessaire) -->
+	<xs:element name="HNBY_ADRESSE_3_ACHETEUR" type="xs:string"/>
+	<!-- Adresse de l'acheteur (3/4) (* si nécessaire) -->
+	<xs:element name="HNBY_ADRESSE_4_ACHETEUR" type="xs:string"/>
+	<!-- Adresse de l'acheteur (4/4) (* si nécessaire) -->
+	<xs:element name="HNBY_VILLE_ACHETEUR" type="xs:string"/>
+	<!-- Ville de l'acheteur -->
+	<xs:element name="HNBY_ETAT_REGION_ACHETEUR" type="xs:string"/>
+	<!-- Etat/Région de l'acheteur -->
+	<xs:element name="HNBY_CODE_POSTAL_ACHETEUR" type="xs:string"/>
+	<!-- Code postal de l'acheteur -->
+	<xs:element name="HNBY_PAYS_ACHETEUR" type="xs:string"/>
+	<!-- Code pays de l'acheteur (ISO 3166) -->
+	<xs:element name="HNBY_CODE_INTERNE_ACHETEUR" type="xs:string"/>
+	<!-- Code interne acheteur -->
+	<xs:element name="HNBY_NO_TVA_ACHETEUR" type="xs:string"/>
+	<!-- Numéro d'identification TVA -->
+	<xs:element name="HNBY_NO_REF_GOUV_ACHETEUR" type="xs:string"/>
+	<!-- N° de référence gouvernementale (France : SIREN/SIRET) -->
+	<xs:element name="HNBY_NO_ENREG_SOC_ACHETEUR" type="xs:string"/>
+	<!-- N° d'enregistrement de la société (France : RCS/RCM) -->
+	<!--  -->
+	<xs:element name="HNSE">
+		<!-- Informations vendeur (facturé par) -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HNSE_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNSE_CODE_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_TABLE_CODE_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_RS_1_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_RS_2_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_RS_3_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_RS_4_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_RS_5_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_ADR_1_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_ADR_2_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_ADR_3_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_ADR_4_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_VILLE_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_ETAT_REGION_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_CP_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_PAYS_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_CODE_INTERNE_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_NO_TVA_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_NO_REF_GOUV_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_NO_ENREG_SOC_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_FORME_JURIDIQUE_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSE_CAPITAL_SOCIAL_VENDEUR" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HNSE_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HNSE". -->
+	<xs:element name="HNSE_CODE_VENDEUR" type="xs:string"/>
+	<!-- Identification du vendeur (GLN recommandé) (Facturé par) -->
+	<xs:element name="HNSE_TABLE_CODE_VENDEUR" type="xs:string"/>
+	<!-- Type de code identification du vendeur -->
+	<xs:element name="HNSE_RS_1_VENDEUR" type="xs:string"/>
+	<!-- Raison sociale du vendeur (1/5) -->
+	<xs:element name="HNSE_RS_2_VENDEUR" type="xs:string"/>
+	<!-- Raison sociale du vendeur (2/5) (* si nécessaire) -->
+	<xs:element name="HNSE_RS_3_VENDEUR" type="xs:string"/>
+	<!-- Raison sociale du vendeur (3/5) (* si nécessaire) -->
+	<xs:element name="HNSE_RS_4_VENDEUR" type="xs:string"/>
+	<!-- Raison sociale du vendeur (4/5) (* si nécessaire) -->
+	<xs:element name="HNSE_RS_5_VENDEUR" type="xs:string"/>
+	<!-- Raison sociale du vendeur (5/5) (* si nécessaire) -->
+	<xs:element name="HNSE_ADR_1_VENDEUR" type="xs:string"/>
+	<!-- Adresse du vendeur (1/4) -->
+	<xs:element name="HNSE_ADR_2_VENDEUR" type="xs:string"/>
+	<!-- Adresse du vendeur (2/4) (* si nécessaire) -->
+	<xs:element name="HNSE_ADR_3_VENDEUR" type="xs:string"/>
+	<!-- Adresse du vendeur (3/4) (* si nécessaire) -->
+	<xs:element name="HNSE_ADR_4_VENDEUR" type="xs:string"/>
+	<!-- Adresse du vendeur (4/4) (* si nécessaire) -->
+	<xs:element name="HNSE_VILLE_VENDEUR" type="xs:string"/>
+	<!-- Ville du vendeur -->
+	<xs:element name="HNSE_ETAT_REGION_VENDEUR" type="xs:string"/>
+	<!-- Etat/Région du vendeur -->
+	<xs:element name="HNSE_CP_VENDEUR" type="xs:string"/>
+	<!-- Code postal du vendeur -->
+	<xs:element name="HNSE_PAYS_VENDEUR" type="xs:string"/>
+	<!-- Code pays du vendeur (ISO 3166) -->
+	<xs:element name="HNSE_CODE_INTERNE_VENDEUR" type="xs:string"/>
+	<!-- Code interne vendeur -->
+	<xs:element name="HNSE_NO_TVA_VENDEUR" type="xs:string"/>
+	<!-- Numéro d'identification TVA -->
+	<xs:element name="HNSE_NO_REF_GOUV_VENDEUR" type="xs:string"/>
+	<!-- N° de référence gouvernementale (France : SIREN/SIRET) -->
+	<xs:element name="HNSE_NO_ENREG_SOC_VENDEUR" type="xs:string"/>
+	<!-- N° d'enregistrement de la société (France : RCS/RCM) -->
+	<xs:element name="HNSE_FORME_JURIDIQUE_VENDEUR" type="xs:string"/>
+	<!-- Forme juridique (SA, SARL, SAS, …) -->
+	<xs:element name="HNSE_CAPITAL_SOCIAL_VENDEUR" type="xs:string"/>
+	<!-- Capital social + Devise (ex : 1 000 000 EUR) -->
+	<!--  -->
+	<xs:element name="HNDP">
+		<!-- Informations lieu de livraison (livré à) -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HNDP_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNDP_CODE_LIEU_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_TABLE_CODE_LIEU_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_RS_1_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_RS_2_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_RS_3_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_RS_4_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_RS_5_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_ADR_1_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_ADR_2_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_ADR_3_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_ADR_4_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_VILLE_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_ETAT_REGION_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_CODE_POSTAL_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_PAYS_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_CODE_INTERNE_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_NO_TVA_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_NO_REF_GOUV_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDP_NO_ENREG_SOC_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HNDP_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HNDP". -->
+	<xs:element name="HNDP_CODE_LIEU_LIVRAISON" type="xs:string"/>
+	<!-- Identification du lieu de livraison (GLN recommandé) -->
+	<xs:element name="HNDP_TABLE_CODE_LIEU_LIVRAISON" type="xs:string"/>
+	<!-- Type de code identification du lieu de livraison -->
+	<xs:element name="HNDP_RS_1_LIVRAISON" type="xs:string"/>
+	<!-- Raison sociale du lieu de livraison (1/5) -->
+	<xs:element name="HNDP_RS_2_LIVRAISON" type="xs:string"/>
+	<!-- Raison sociale du lieu de livraison (2/5) (* si nécessaire) -->
+	<xs:element name="HNDP_RS_3_LIVRAISON" type="xs:string"/>
+	<!-- Raison sociale du lieu de livraison (3/5) (* si nécessaire) -->
+	<xs:element name="HNDP_RS_4_LIVRAISON" type="xs:string"/>
+	<!-- Raison sociale du lieu de livraison (4/5) (* si nécessaire) -->
+	<xs:element name="HNDP_RS_5_LIVRAISON" type="xs:string"/>
+	<!-- Raison sociale du lieu de livraison (5/5) (* si nécessaire) -->
+	<xs:element name="HNDP_ADR_1_LIVRAISON" type="xs:string"/>
+	<!-- Adresse du lieu de livraison (1/4) -->
+	<xs:element name="HNDP_ADR_2_LIVRAISON" type="xs:string"/>
+	<!-- Adresse du lieu de livraison (2/4) (* si nécessaire) -->
+	<xs:element name="HNDP_ADR_3_LIVRAISON" type="xs:string"/>
+	<!-- Adresse du lieu de livraison (3/4) (* si nécessaire) -->
+	<xs:element name="HNDP_ADR_4_LIVRAISON" type="xs:string"/>
+	<!-- Adresse du lieu de livraison (4/4) (* si nécessaire) -->
+	<xs:element name="HNDP_VILLE_LIVRAISON" type="xs:string"/>
+	<!-- Ville du lieu de livraison -->
+	<xs:element name="HNDP_ETAT_REGION_LIVRAISON" type="xs:string"/>
+	<!-- Etat/Région du lieu de livraison -->
+	<xs:element name="HNDP_CODE_POSTAL_LIVRAISON" type="xs:string"/>
+	<!-- Code postal du lieu de livraison -->
+	<xs:element name="HNDP_PAYS_LIVRAISON" type="xs:string"/>
+	<!-- Code pays du lieu de livraison (ISO 3166) -->
+	<xs:element name="HNDP_CODE_INTERNE_LIVRAISON" type="xs:string"/>
+	<!-- Code interne lieu de livraison -->
+	<xs:element name="HNDP_NO_TVA_LIVRAISON" type="xs:string"/>
+	<!-- Numéro d'identification TVA -->
+	<xs:element name="HNDP_NO_REF_GOUV_LIVRAISON" type="xs:string"/>
+	<!-- N° de référence gouvernementale (France : SIREN/SIRET) -->
+	<xs:element name="HNDP_NO_ENREG_SOC_LIVRAISON" type="xs:string"/>
+	<!-- N° d'enregistrement de la société (France  : RCS/RCM) -->
+	<!--  -->
+	<xs:element name="HNSF">
+		<!-- Informations lieu d'expédition (expédié de) -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HNSF_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNSF_CODE_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_TABLE_CODE_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_RS_1_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_RS_2_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_RS_3_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_RS_4_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_RS_5_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_ADR_1_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_ADR_2_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_ADR_3_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_ADR_4_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_VILLE_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_ETAT_REGION_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_CODE_POSTAL_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_PAYS_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_CODE_INTERNE_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_NO_TVA_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNSF_NO_SIREN_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HNSF_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HNSF". -->
+	<xs:element name="HNSF_CODE_EXPEDITION" type="xs:string"/>
+	<!-- Identification du lieu d'expédition (GLN recommandé) -->
+	<xs:element name="HNSF_TABLE_CODE_EXPEDITION" type="xs:string"/>
+	<!-- Type de code identification du lieu d'expédition -->
+	<xs:element name="HNSF_RS_1_EXPEDITION" type="xs:string"/>
+	<!-- Raison sociale du lieu d'expédition (1/5) -->
+	<xs:element name="HNSF_RS_2_EXPEDITION" type="xs:string"/>
+	<!-- Raison sociale du lieu d'expédition (2/5) (* si nécessaire) -->
+	<xs:element name="HNSF_RS_3_EXPEDITION" type="xs:string"/>
+	<!-- Raison sociale du lieu d'expédition (3/5) (* si nécessaire) -->
+	<xs:element name="HNSF_RS_4_EXPEDITION" type="xs:string"/>
+	<!-- Raison sociale du lieu d'expédition (4/5) (* si nécessaire) -->
+	<xs:element name="HNSF_RS_5_EXPEDITION" type="xs:string"/>
+	<!-- Raison sociale du lieu d'expédition (5/5) (* si nécessaire) -->
+	<xs:element name="HNSF_ADR_1_EXPEDITION" type="xs:string"/>
+	<!-- Adresse du lieu d'expédition (1/4) -->
+	<xs:element name="HNSF_ADR_2_EXPEDITION" type="xs:string"/>
+	<!-- Adresse du lieu d'expédition (2/4) (* si nécessaire) -->
+	<xs:element name="HNSF_ADR_3_EXPEDITION" type="xs:string"/>
+	<!-- Adresse du lieu d'expédition (3/4) (* si nécessaire) -->
+	<xs:element name="HNSF_ADR_4_EXPEDITION" type="xs:string"/>
+	<!-- Adresse du lieu d'expédition (4/4) (* si nécessaire) -->
+	<xs:element name="HNSF_VILLE_EXPEDITION" type="xs:string"/>
+	<!-- Ville du lieu d'expédition -->
+	<xs:element name="HNSF_ETAT_REGION_EXPEDITION" type="xs:string"/>
+	<!-- Etat/Région du lieu d'expédition -->
+	<xs:element name="HNSF_CODE_POSTAL_EXPEDITION" type="xs:string"/>
+	<!-- Code postal du lieu d'expédition -->
+	<xs:element name="HNSF_PAYS_EXPEDITION" type="xs:string"/>
+	<!-- Code pays du lieu d'expédition (ISO 3166) -->
+	<xs:element name="HNSF_CODE_INTERNE_EXPEDITION" type="xs:string"/>
+	<!-- Numéro de client interne -->
+	<xs:element name="HNSF_NO_TVA_EXPEDITION" type="xs:string"/>
+	<!-- Numéro d'identification TVA -->
+	<xs:element name="HNSF_NO_SIREN_EXPEDITION" type="xs:string"/>
+	<!-- N° de SIREN/SIRET -->
+	<!--  -->
+	<xs:element name="HNCO">
+		<!-- Informations siège social (*si différent du vendeur (facturé par)) -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HNCO_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNCO_CODE_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_TABLE_CODE_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_RS_1_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_RS_2_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_RS_3_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_RS_4_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_RS_5_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_ADR_1_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_ADR_2_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_ADR_3_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_ADR_4_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_VILLE_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_ETAT_REGION_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_CODE_POSTAL_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_PAYS_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_CODE_INTERNE_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_NO_TVA_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNCO_NO_SIREN_SIEGE_SOCIAL" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HNCO_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HNCO". -->
+	<xs:element name="HNCO_CODE_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Identification du siège social (GLN recommandé) -->
+	<xs:element name="HNCO_TABLE_CODE_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Type de code identification du siège social -->
+	<xs:element name="HNCO_RS_1_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Raison sociale du siège social (1/5) -->
+	<xs:element name="HNCO_RS_2_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Raison sociale du siège social (2/5) (* si nécessaire) -->
+	<xs:element name="HNCO_RS_3_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Raison sociale du siège social (3/5) (* si nécessaire) -->
+	<xs:element name="HNCO_RS_4_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Raison sociale du siège social (4/5) (* si nécessaire) -->
+	<xs:element name="HNCO_RS_5_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Raison sociale du siège social (5/5) (* si nécessaire) -->
+	<xs:element name="HNCO_ADR_1_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Adresse du siège social (1/4) -->
+	<xs:element name="HNCO_ADR_2_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Adresse du siège social (2/4) (* si nécessaire) -->
+	<xs:element name="HNCO_ADR_3_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Adresse du siège social (3/4) (* si nécessaire) -->
+	<xs:element name="HNCO_ADR_4_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Adresse du siège social (4/4) (* si nécessaire) -->
+	<xs:element name="HNCO_VILLE_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Ville du siège social -->
+	<xs:element name="HNCO_ETAT_REGION_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Etat/Région du siège social -->
+	<xs:element name="HNCO_CODE_POSTAL_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Code postal du siège social -->
+	<xs:element name="HNCO_PAYS_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Code pays du siège social (ISO 3166) -->
+	<xs:element name="HNCO_CODE_INTERNE_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Numéro de client interne -->
+	<xs:element name="HNCO_NO_TVA_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- Numéro d'identification TVA -->
+	<xs:element name="HNCO_NO_SIREN_SIEGE_SOCIAL" type="xs:string"/>
+	<!-- N° de SIREN/SIRET -->
+	<!--  -->
+	<xs:element name="HNIV">
+		<!-- Informations facturé à -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HNIV_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNIV_CODE_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_TABLE_CODE_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_RS_1_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_RS_2_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_RS_3_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_RS_4_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_RS_5_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_ADR_1_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_ADR_2_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_ADR_3_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_ADR_4_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_VILLE_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_ETAT_REGION_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_CODE_POSTAL_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_PAYS_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_CODE_INTERNE_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_NO_TVA_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNIV_NO_SIREN_FACTURE_A" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HNIV_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HNIV". -->
+	<xs:element name="HNIV_CODE_FACTURE_A" type="xs:string"/>
+	<!-- Identification du facturé à (GLN recommandé) -->
+	<xs:element name="HNIV_TABLE_CODE_FACTURE_A" type="xs:string"/>
+	<!-- Type de code identification du facturé à -->
+	<xs:element name="HNIV_RS_1_FACTURE_A" type="xs:string"/>
+	<!-- Raison sociale du facturé à (1/5) -->
+	<xs:element name="HNIV_RS_2_FACTURE_A" type="xs:string"/>
+	<!-- Raison sociale du facturé à (2/5) (* si nécessaire) -->
+	<xs:element name="HNIV_RS_3_FACTURE_A" type="xs:string"/>
+	<!-- Raison sociale du facturé à (3/5) (* si nécessaire) -->
+	<xs:element name="HNIV_RS_4_FACTURE_A" type="xs:string"/>
+	<!-- Raison sociale du facturé à (4/5) (* si nécessaire) -->
+	<xs:element name="HNIV_RS_5_FACTURE_A" type="xs:string"/>
+	<!-- Raison sociale du facturé à (5/5) (* si nécessaire) -->
+	<xs:element name="HNIV_ADR_1_FACTURE_A" type="xs:string"/>
+	<!-- Adresse du facturé à (1/4) -->
+	<xs:element name="HNIV_ADR_2_FACTURE_A" type="xs:string"/>
+	<!-- Adresse du facturé à (2/4) (* si nécessaire) -->
+	<xs:element name="HNIV_ADR_3_FACTURE_A" type="xs:string"/>
+	<!-- Adresse du facturé à (3/4) (* si nécessaire) -->
+	<xs:element name="HNIV_ADR_4_FACTURE_A" type="xs:string"/>
+	<!-- Adresse du facturé à (4/4) (* si nécessaire) -->
+	<xs:element name="HNIV_VILLE_FACTURE_A" type="xs:string"/>
+	<!-- Ville du facturé à -->
+	<xs:element name="HNIV_ETAT_REGION_FACTURE_A" type="xs:string"/>
+	<!-- Etat/Région du facturé à -->
+	<xs:element name="HNIV_CODE_POSTAL_FACTURE_A" type="xs:string"/>
+	<!-- Code postal du facturé à -->
+	<xs:element name="HNIV_PAYS_FACTURE_A" type="xs:string"/>
+	<!-- Code pays du facturé à (ISO 3166) -->
+	<xs:element name="HNIV_CODE_INTERNE_FACTURE_A" type="xs:string"/>
+	<!-- Numéro de client interne -->
+	<xs:element name="HNIV_NO_TVA_FACTURE_A" type="xs:string"/>
+	<!-- Numéro d'identification TVA -->
+	<xs:element name="HNIV_NO_SIREN_FACTURE_A" type="xs:string"/>
+	<!-- N° de SIREN/SIRET -->
+	<!--  -->
+	<xs:element name="HNRE">
+		<!-- Informations réglé à -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HNRE_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNRE_CODE_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_TABLE_CODE_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_RS_1_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_RS_2_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_RS_3_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_RS_4_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_RS_5_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_ADR_1_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_ADR_2_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_ADR_3_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_ADR_4_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_VILLE_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_ETAT_REGION_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_CODE_POSTAL_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_PAYS_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_CODE_INTERNE_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_NO_TVA_REGLE_A" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNRE_NO_SIREN_REGLE_A" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HNRE_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HNRE". -->
+	<xs:element name="HNRE_CODE_REGLE_A" type="xs:string"/>
+	<!-- Identification du réglé à (GLN recommandé) -->
+	<xs:element name="HNRE_TABLE_CODE_REGLE_A" type="xs:string"/>
+	<!-- Type de code identification du réglé à -->
+	<xs:element name="HNRE_RS_1_REGLE_A" type="xs:string"/>
+	<!-- Raison sociale du réglé à (1/5) -->
+	<xs:element name="HNRE_RS_2_REGLE_A" type="xs:string"/>
+	<!-- Raison sociale du réglé à (2/5) (* si nécessaire) -->
+	<xs:element name="HNRE_RS_3_REGLE_A" type="xs:string"/>
+	<!-- Raison sociale du réglé à (3/5) (* si nécessaire) -->
+	<xs:element name="HNRE_RS_4_REGLE_A" type="xs:string"/>
+	<!-- Raison sociale du réglé à (4/5) (* si nécessaire) -->
+	<xs:element name="HNRE_RS_5_REGLE_A" type="xs:string"/>
+	<!-- Raison sociale du réglé à (5/5) (* si nécessaire) -->
+	<xs:element name="HNRE_ADR_1_REGLE_A" type="xs:string"/>
+	<!-- Adresse du réglé à (1/4) -->
+	<xs:element name="HNRE_ADR_2_REGLE_A" type="xs:string"/>
+	<!-- Adresse du réglé à (2/4) (* si nécessaire) -->
+	<xs:element name="HNRE_ADR_3_REGLE_A" type="xs:string"/>
+	<!-- Adresse du réglé à (3/4) (* si nécessaire) -->
+	<xs:element name="HNRE_ADR_4_REGLE_A" type="xs:string"/>
+	<!-- Adresse du réglé à (4/4) (* si nécessaire) -->
+	<xs:element name="HNRE_VILLE_REGLE_A" type="xs:string"/>
+	<!-- Ville du réglé à -->
+	<xs:element name="HNRE_ETAT_REGION_REGLE_A" type="xs:string"/>
+	<!-- Etat/Région du réglé à -->
+	<xs:element name="HNRE_CODE_POSTAL_REGLE_A" type="xs:string"/>
+	<!-- Code postal du réglé à -->
+	<xs:element name="HNRE_PAYS_REGLE_A" type="xs:string"/>
+	<!-- Code pays du réglé à (ISO 3166) -->
+	<xs:element name="HNRE_CODE_INTERNE_REGLE_A" type="xs:string"/>
+	<!-- Numéro de client interne -->
+	<xs:element name="HNRE_NO_TVA_REGLE_A" type="xs:string"/>
+	<!-- Numéro d'identification TVA -->
+	<xs:element name="HNRE_NO_SIREN_REGLE_A" type="xs:string"/>
+	<!-- N° de SIREN/SIRET -->
+	<xs:element name="HNLC">
+		<!-- Informations déclarant de TVA (*si différent du vendeur (facturé par)) -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HNLC_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNLC_CODE_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_TABLE_CODE_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_RS_1_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_RS_2_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_RS_3_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_RS_4_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_RS_5_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_ADR_1_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_ADR_2_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_ADR_3_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_ADR_4_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_VILLE_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_ETAT_REGION_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_CODE_POSTAL_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_PAYS_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_CODE_INTERNE_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_NO_TVA_DECLARANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNLC_NO_SIREN_DECLARANT" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HNLC_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HNLC". -->
+	<xs:element name="HNLC_CODE_DECLARANT" type="xs:string"/>
+	<!-- Identification du déclarant TVA (GLN recommandé) -->
+	<xs:element name="HNLC_TABLE_CODE_DECLARANT" type="xs:string"/>
+	<!-- Type de code identification du déclarant TVA -->
+	<xs:element name="HNLC_RS_1_DECLARANT" type="xs:string"/>
+	<!-- Raison sociale du déclarant TVA (1/5) -->
+	<xs:element name="HNLC_RS_2_DECLARANT" type="xs:string"/>
+	<!-- Raison sociale du déclarant TVA (2/5) (* si nécessaire) -->
+	<xs:element name="HNLC_RS_3_DECLARANT" type="xs:string"/>
+	<!-- Raison sociale du déclarant TVA (3/5) (* si nécessaire) -->
+	<xs:element name="HNLC_RS_4_DECLARANT" type="xs:string"/>
+	<!-- Raison sociale du déclarant TVA (4/5) (* si nécessaire) -->
+	<xs:element name="HNLC_RS_5_DECLARANT" type="xs:string"/>
+	<!-- Raison sociale du déclarant TVA (5/5) (* si nécessaire) -->
+	<xs:element name="HNLC_ADR_1_DECLARANT" type="xs:string"/>
+	<!-- Adresse du déclarant TVA (1/4) -->
+	<xs:element name="HNLC_ADR_2_DECLARANT" type="xs:string"/>
+	<!-- Adresse du déclarant TVA (2/4) (* si nécessaire) -->
+	<xs:element name="HNLC_ADR_3_DECLARANT" type="xs:string"/>
+	<!-- Adresse du déclarant TVA (3/4) (* si nécessaire) -->
+	<xs:element name="HNLC_ADR_4_DECLARANT" type="xs:string"/>
+	<!-- Adresse du déclarant TVA (4/4) (* si nécessaire) -->
+	<xs:element name="HNLC_VILLE_DECLARANT" type="xs:string"/>
+	<!-- Ville du déclarant TVA -->
+	<xs:element name="HNLC_ETAT_REGION_DECLARANT" type="xs:string"/>
+	<!-- Etat/Région du déclarant TVA -->
+	<xs:element name="HNLC_CODE_POSTAL_DECLARANT" type="xs:string"/>
+	<!-- Code postal du déclarant TVA -->
+	<xs:element name="HNLC_PAYS_DECLARANT" type="xs:string"/>
+	<!-- Code pays du déclarant TVA (ISO 3166) -->
+	<xs:element name="HNLC_CODE_INTERNE_DECLARANT" type="xs:string"/>
+	<!-- Numéro de client interne -->
+	<xs:element name="HNLC_NO_TVA_DECLARANT" type="xs:string"/>
+	<!-- Numéro d'identification TVA -->
+	<xs:element name="HNLC_NO_SIREN_DECLARANT" type="xs:string"/>
+	<!-- N° de SIREN/SIRET -->
+	<!--  -->
+	<xs:element name="HNDL">
+		<!-- Information commissionnaire (factor) (*si différent du réglé à) -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HNDL_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HNDL_CODE_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_TABLE_CODE_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_RS_1_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_RS_2_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_RS_3_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_RS_4_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_RS_5_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_ADR_1_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_ADR_2_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_ADR_3_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_ADR_4_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_VILLE_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_ETAT_REGION_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_CODE_POSTAL_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_PAYS_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_CODE_INTERNE_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_NO_TVA_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HNDL_NO_SIREN_COMMISSIONNAIRE" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HNDL_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HNDL". -->
+	<xs:element name="HNDL_CODE_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Identification du commissionnaire (GLN recommandé) -->
+	<xs:element name="HNDL_TABLE_CODE_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Type de code identification du commissionnaire -->
+	<xs:element name="HNDL_RS_1_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Raison sociale du commissionnaire (1/5) -->
+	<xs:element name="HNDL_RS_2_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Raison sociale du commissionnaire (2/5) -->
+	<xs:element name="HNDL_RS_3_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Raison sociale du commissionnaire (3/5) -->
+	<xs:element name="HNDL_RS_4_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Raison sociale du commissionnaire (4/5) -->
+	<xs:element name="HNDL_RS_5_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Raison sociale du commissionnaire (5/5) -->
+	<xs:element name="HNDL_ADR_1_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Adresse du commissionnaire (1/4) -->
+	<xs:element name="HNDL_ADR_2_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Adresse du commissionnaire (2/4) -->
+	<xs:element name="HNDL_ADR_3_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Adresse du commissionnaire (3/4) -->
+	<xs:element name="HNDL_ADR_4_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Adresse du commissionnaire (4/4) -->
+	<xs:element name="HNDL_VILLE_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Ville du commissionnaire -->
+	<xs:element name="HNDL_ETAT_REGION_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Etat/Région du commissionnaire -->
+	<xs:element name="HNDL_CODE_POSTAL_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Code postal du commissionnaire -->
+	<xs:element name="HNDL_PAYS_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Code pays du commissionnaire (ISO 3166) -->
+	<xs:element name="HNDL_CODE_INTERNE_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Numéro de client interne -->
+	<xs:element name="HNDL_NO_TVA_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- Numéro d'identification TVA -->
+	<xs:element name="HNDL_NO_SIREN_COMMISSIONNAIRE" type="xs:string"/>
+	<!-- N° de SIREN/SIRET -->
+	<!--  -->
+	<xs:element name="HPAI">
+		<!-- Informations paiement -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HPAI_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HPAI_DEVISE_CIBLE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_DEVISE_FACTURATION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_TAUX_CHANGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_DATE_HEURE_TAUX_CHANGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_GARANTIE_PAIEMENT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_MOYEN_PAIEMENT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_DATE_ECHEANCE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_REGIME_TVA" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_EXONERATION_TVA" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_PENALITES_PCT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_ESCOMPTE_PCT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_ESCOMPTE_MONTANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_ESCOMPTE_DATE_REF" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_ESCOMPTE_NB_JOURS" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HPAI_ESCOMPTE_DATE_LIMITE" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HPAI_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HPAI". -->
+	<xs:element name="HPAI_DEVISE_CIBLE" type="xs:string"/>
+	<!-- Devise de paiement de la TVA si différente de celle de la facture -->
+	<xs:element name="HPAI_DEVISE_FACTURATION" type="xs:string"/>
+	<!-- Devise de facturation (ISO 4217) -->
+	<xs:element name="HPAI_TAUX_CHANGE" type="xs:string"/>
+	<!-- Taux de change -->
+	<xs:element name="HPAI_DATE_HEURE_TAUX_CHANGE" type="xs:string"/>
+	<!-- Date du taux de change -->
+	<xs:element name="HPAI_GARANTIE_PAIEMENT" type="xs:string"/>
+	<!-- Code garantie de paiement -->
+	<xs:element name="HPAI_MOYEN_PAIEMENT" type="xs:string"/>
+	<!-- Code moyen de paiement -->
+	<xs:element name="HPAI_DATE_ECHEANCE" type="xs:string"/>
+	<!-- Date d'échéance -->
+	<xs:element name="HPAI_REGIME_TVA" type="xs:string"/>
+	<!-- Code régime acquittement de la TVA -->
+	<xs:element name="HPAI_EXONERATION_TVA" type="xs:string"/>
+	<!-- Code : 'E' = Exonération de TVA -->
+	<xs:element name="HPAI_PENALITES_PCT" type="xs:string"/>
+	<!-- Pourcentage de pénalités -->
+	<xs:element name="HPAI_ESCOMPTE_PCT" type="xs:string"/>
+	<!-- Pourcentage d'escompte conditionnel -->
+	<xs:element name="HPAI_ESCOMPTE_MONTANT" type="xs:string"/>
+	<!-- Montant escompte -->
+	<xs:element name="HPAI_ESCOMPTE_DATE_REF" type="xs:string"/>
+	<!-- Date de référence pour l'application de l'escompte conditionnel (en code) -->
+	<xs:element name="HPAI_ESCOMPTE_NB_JOURS" type="xs:string"/>
+	<!-- Nombre de jours par rapport à la date de référence -->
+	<xs:element name="HPAI_ESCOMPTE_DATE_LIMITE" type="xs:string"/>
+	<!-- Date limite escompte -->
+	<!--  -->
+	<xs:element name="HALC">
+		<!-- Remises / charges globales -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HALC_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="HALC_NO_LIGNE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_QUALIFIANT_REMISE_CHARGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_CODE_REMISE_CHARGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_CODE_REGLEMENT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_CODE_SERVICE_PARTICULIER" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_LIBELLE_1" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_LIBELLE_2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_INDICATEUR_SEQUENCE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_QUANTITE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_POURCENTAGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_MONTANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="HALC_TAUX" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="HALC_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "HALC". -->
+	<xs:element name="HALC_NO_LIGNE" type="xs:string"/>
+	<!-- Numéro séquentiel de ligne de remise -->
+	<xs:element name="HALC_QUALIFIANT_REMISE_CHARGE" type="xs:string"/>
+	<!-- Code remise / charge -->
+	<xs:element name="HALC_CODE_REMISE_CHARGE" type="xs:string"/>
+	<!-- Code EAN remise / charge -->
+	<xs:element name="HALC_CODE_REGLEMENT" type="xs:string"/>
+	<!-- Code règlement remise / charge -->
+	<xs:element name="HALC_CODE_SERVICE_PARTICULIER" type="xs:string"/>
+	<!-- Code service particulier -->
+	<xs:element name="HALC_LIBELLE_1" type="xs:string"/>
+	<!-- Libellé remise / charge (1/2) -->
+	<xs:element name="HALC_LIBELLE_2" type="xs:string"/>
+	<!-- Libellé remise / charge (2/2) -->
+	<xs:element name="HALC_INDICATEUR_SEQUENCE" type="xs:string"/>
+	<!-- Numéro de séquence d'application de remise/charge -->
+	<xs:element name="HALC_QUANTITE" type="xs:string"/>
+	<!-- Quantité de remise / charge -->
+	<xs:element name="HALC_POURCENTAGE" type="xs:string"/>
+	<!-- Pourcentage de remise/charge -->
+	<xs:element name="HALC_MONTANT" type="xs:string"/>
+	<!-- Montant de remise/charge -->
+	<xs:element name="HALC_TAUX" type="xs:string"/>
+	<!-- Taux de TVA -->
+	<!--  -->
+	<xs:element name="LIGNES">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="LIGNE" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="LIGNE">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DLIN" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="DFTX" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="DALC" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="DLIN">
+		<!-- Ligne de document -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DLIN_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="DLIN_NO_LIGNE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_INDICATEUR_SS_LIGNE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_NO_LIGNE_RATTACHEMENT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_CONFIGURATION_SS_LIGNE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_CODE_PRODUIT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_TYPE_CODE_PRODUIT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_CODE_INTERNE_ACHETEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_CODE_INTERNE_VENDEUR" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_VARIANTE_PROMOTIONNELLE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_NO_SERIE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_LIBELLE_PRODUIT_1" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_LIBELLE_PRODUIT_2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_TYPE_PRODUIT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_PCB" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_UM_PCB" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_QTE_FACTUREE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_UM_QTE_FACTUREE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_QTE_GRATUITE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_UM_QTE_GRATUITE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_QTE_RETOURNEE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_UM_QTE_RETOURNEE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_MONTANT_NET_LIGNE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_MONTANT_HORS_TTE_TAXE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_TAUX_TVA" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_PRIX_NET" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_UM_PRIX_NET" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_BASE_PRIX_NET" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_PRIX_BRUT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_UM_PRIX_BRUT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_BASE_PRIX_BRUT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_PRIX_BRUT_TTC" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_UM_PRIX_BRUT_TTC" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_BASE_PRIX_BRUT_TTC" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_NO_COMMANDE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_DATE_COMMANDE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_NO_BL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_DATE_BL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_NO_DESADV" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_DATE_DESADV" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_DATE_HEURE_EXPEDITION" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_DATE_HEURE_ENLEVEMENT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DLIN_DATE_HEURE_REELLE_LIVRAISON" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="DLIN_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "DLIN". -->
+	<xs:element name="DLIN_NO_LIGNE" type="xs:string"/>
+	<!-- Numéro séquentiel de ligne de commande -->
+	<xs:element name="DLIN_INDICATEUR_SS_LIGNE" type="xs:string"/>
+	<!-- Indicateur sous ligne ('0' = ligne normale / '1' = sous ligne) -->
+	<xs:element name="DLIN_NO_LIGNE_RATTACHEMENT" type="xs:string"/>
+	<!-- Numéro de ligne auquel est rattachée la sous ligne -->
+	<xs:element name="DLIN_CONFIGURATION_SS_LIGNE" type="xs:string"/>
+	<!-- A' = Ajouté à la configuration / 'I' = Inclus dans la configuration -->
+	<xs:element name="DLIN_CODE_PRODUIT" type="xs:string"/>
+	<!-- Code produit (GTIN recommandé) -->
+	<xs:element name="DLIN_TYPE_CODE_PRODUIT" type="xs:string"/>
+	<!-- Type de code produit (en code) -->
+	<xs:element name="DLIN_CODE_INTERNE_ACHETEUR" type="xs:string"/>
+	<!-- Code interne produit acheteur -->
+	<xs:element name="DLIN_CODE_INTERNE_VENDEUR" type="xs:string"/>
+	<!-- Code interne produit vendeur -->
+	<xs:element name="DLIN_VARIANTE_PROMOTIONNELLE" type="xs:string"/>
+	<!-- Variante promotionnelle (par défaut '00') -->
+	<xs:element name="DLIN_NO_SERIE" type="xs:string"/>
+	<!-- Numéro de série -->
+	<xs:element name="DLIN_LIBELLE_PRODUIT_1" type="xs:string"/>
+	<!-- Libellé produit (1/2) -->
+	<xs:element name="DLIN_LIBELLE_PRODUIT_2" type="xs:string"/>
+	<!-- Libellé produit (2/2) (* si nécessaire) -->
+	<xs:element name="DLIN_TYPE_PRODUIT" type="xs:string"/>
+	<!-- Type de produit en code -->
+	<xs:element name="DLIN_PCB" type="xs:string"/>
+	<!-- Quantité par conditionnement (PCB) -->
+	<xs:element name="DLIN_UM_PCB" type="xs:string"/>
+	<!-- Unité de mesure du PCB -->
+	<xs:element name="DLIN_QTE_FACTUREE" type="xs:string"/>
+	<!-- Quantité facturée -->
+	<xs:element name="DLIN_UM_QTE_FACTUREE" type="xs:string"/>
+	<!-- Unité de mesure de la quantité facturée -->
+	<xs:element name="DLIN_QTE_GRATUITE" type="xs:string"/>
+	<!-- Quantité gratuite -->
+	<xs:element name="DLIN_UM_QTE_GRATUITE" type="xs:string"/>
+	<!-- Unité de mesure quantité gratuite -->
+	<xs:element name="DLIN_QTE_RETOURNEE" type="xs:string"/>
+	<!-- Quantité retournée -->
+	<xs:element name="DLIN_UM_QTE_RETOURNEE" type="xs:string"/>
+	<!-- Unité de mesure quantité retournée -->
+	<xs:element name="DLIN_MONTANT_NET_LIGNE" type="xs:string"/>
+	<!-- Montant net de la ligne -->
+	<xs:element name="DLIN_MONTANT_HORS_TTE_TAXE" type="xs:string"/>
+	<!-- Montant hors toute taxe (* si taxes parafiscales soumises à un taux de TVA différent de celui de la ligne) -->
+	<xs:element name="DLIN_TAUX_TVA" type="xs:string"/>
+	<!-- Taux TVA -->
+	<xs:element name="DLIN_PRIX_NET" type="xs:string"/>
+	<!-- Prix unitaire net HT pour calcul -->
+	<xs:element name="DLIN_UM_PRIX_NET" type="xs:string"/>
+	<!-- Unité de mesure du prix unitaire net -->
+	<xs:element name="DLIN_BASE_PRIX_NET" type="xs:string"/>
+	<!-- Base prix unitaire net -->
+	<xs:element name="DLIN_PRIX_BRUT" type="xs:string"/>
+	<!-- Prix unitaire brut pour calcul -->
+	<xs:element name="DLIN_UM_PRIX_BRUT" type="xs:string"/>
+	<!-- Unité de mesure du prix unitaire brut -->
+	<xs:element name="DLIN_BASE_PRIX_BRUT" type="xs:string"/>
+	<!-- Base prix unitaire brut -->
+	<xs:element name="DLIN_PRIX_BRUT_TTC" type="xs:string"/>
+	<!-- Prix brut TTC pour information -->
+	<xs:element name="DLIN_UM_PRIX_BRUT_TTC" type="xs:string"/>
+	<!-- Unité de mesure du prix brut TTC -->
+	<xs:element name="DLIN_BASE_PRIX_BRUT_TTC" type="xs:string"/>
+	<!-- Base prix unitaire brut TTC -->
+	<xs:element name="DLIN_NO_COMMANDE" type="xs:string"/>
+	<!-- Numéro de commande client (* si différent de l'entête) -->
+	<xs:element name="DLIN_DATE_COMMANDE" type="xs:string"/>
+	<!-- Date de commande client (* si différent de l'entête) -->
+	<xs:element name="DLIN_NO_BL" type="xs:string"/>
+	<!-- Numéro de bon de livraison (* si différent de l'entête) -->
+	<xs:element name="DLIN_DATE_BL" type="xs:string"/>
+	<!-- Date de bon de livraison (* si différent de l'entête) -->
+	<xs:element name="DLIN_NO_DESADV" type="xs:string"/>
+	<!-- Numéro d'avis d'expédition (DESADV) (* si différent de l'entête) -->
+	<xs:element name="DLIN_DATE_DESADV" type="xs:string"/>
+	<!-- Date d'avis d'expédition (DESADV) (* si différent de l'entête) -->
+	<xs:element name="DLIN_DATE_HEURE_EXPEDITION" type="xs:string"/>
+	<!-- Date/heure d'expédition (* si différente de la date spécifiée en entête) -->
+	<xs:element name="DLIN_DATE_HEURE_ENLEVEMENT" type="xs:string"/>
+	<!-- Date/heure d'enlèvement (* si différente de la date spécifiée en entête) -->
+	<xs:element name="DLIN_DATE_HEURE_REELLE_LIVRAISON" type="xs:string"/>
+	<!-- Date/heure réelle de livraison (* si différente de la date spécifiée en entête) -->
+	<!--  -->
+	<xs:element name="DFTX">
+		<!-- Commentaires s'appliquant à la ligne de document -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DFTX_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="DFTX_NO_LIGNE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DFTX_QLF_COMMENTAIRE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DFTX_COMMENTAIRE_1" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DFTX_COMMENTAIRE_2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DFTX_COMMENTAIRE_3" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DFTX_COMMENTAIRE_4" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DFTX_COMMENTAIRE_5" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="DFTX_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "DFTX". -->
+	<xs:element name="DFTX_NO_LIGNE" type="xs:string"/>
+	<!-- Numéro séquentiel de ligne de commentaire -->
+	<xs:element name="DFTX_QLF_COMMENTAIRE" type="xs:string"/>
+	<!-- Type de commentaire en code -->
+	<xs:element name="DFTX_COMMENTAIRE_1" type="xs:string"/>
+	<!-- Commentaire 1/5 -->
+	<xs:element name="DFTX_COMMENTAIRE_2" type="xs:string"/>
+	<!-- Commentaire 2/5 -->
+	<xs:element name="DFTX_COMMENTAIRE_3" type="xs:string"/>
+	<!-- Commentaire 3/5 -->
+	<xs:element name="DFTX_COMMENTAIRE_4" type="xs:string"/>
+	<!-- Commentaire 4/5 -->
+	<xs:element name="DFTX_COMMENTAIRE_5" type="xs:string"/>
+	<!-- Commentaire 5/5 -->
+	<!--  -->
+	<xs:element name="DALC">
+		<!-- Remises / charges à la ligne -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DALC_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="DALC_NO_LIGNE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_QUALIFIANT_REMISE_CHARGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_CODE_REMISE_CHARGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_CODE_REGLEMENT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_CODE_SERVICE_PARTICULIER" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_LIBELLE_1" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_LIBELLE_2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_INDICATEUR_SEQUENCE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_QUANTITE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_POURCENTAGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_MONTANT" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="DALC_TAUX" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="DALC_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "DALC". -->
+	<xs:element name="DALC_NO_LIGNE" type="xs:string"/>
+	<!-- Numéro séquentiel de ligne de remise -->
+	<xs:element name="DALC_QUALIFIANT_REMISE_CHARGE" type="xs:string"/>
+	<!-- Code remise / charge -->
+	<xs:element name="DALC_CODE_REMISE_CHARGE" type="xs:string"/>
+	<!-- Code EAN remise / charge -->
+	<xs:element name="DALC_CODE_REGLEMENT" type="xs:string"/>
+	<!-- Code règlement remise / charge -->
+	<xs:element name="DALC_CODE_SERVICE_PARTICULIER" type="xs:string"/>
+	<!-- Code service particulier -->
+	<xs:element name="DALC_LIBELLE_1" type="xs:string"/>
+	<!-- Libellé remise / charge (1/2) -->
+	<xs:element name="DALC_LIBELLE_2" type="xs:string"/>
+	<!-- Libellé remise / charge (2/2) (* si nécessaire) -->
+	<xs:element name="DALC_INDICATEUR_SEQUENCE" type="xs:string"/>
+	<!-- Numéro de séquence d'application de remise/charge -->
+	<xs:element name="DALC_QUANTITE" type="xs:string"/>
+	<!-- Quantité de remise / charge -->
+	<xs:element name="DALC_POURCENTAGE" type="xs:string"/>
+	<!-- Pourcentage de remise/charge -->
+	<xs:element name="DALC_MONTANT" type="xs:string"/>
+	<!-- Montant de remise/charge -->
+	<xs:element name="DALC_TAUX" type="xs:string"/>
+	<!-- Taux de TVA -->
+	<!--  -->
+	<xs:element name="PIED">
+		<!--  -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FMOA" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="FALC" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="FMOA">
+		<!-- Pied -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FMOA_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="FMOA_MNT_TAXABLE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_MNT_TAXE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_MNT_TOTAL" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_MNT_DU" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_MNT_ACOMPTE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_MNT_CONSIGNES" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_MNT_NET_RISTOURNABLE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_MNT_TOTAL_TAXES_DROITS" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_MNT_HORS_TTES_TAXES" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_TX_TVA_1" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TVA_1" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TAXABLE_1" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_TX_TVA_2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TVA_2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TAXABLE_2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_TX_TVA_3" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TVA_3" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TAXABLE_3" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_TX_TVA_4" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TVA_4" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TAXABLE_4" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_TX_TVA_5" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TVA_5" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FMOA_RECAP_MNT_TAXABLE_5" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="FMOA_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "FMOA". -->
+	<xs:element name="FMOA_MNT_TAXABLE" type="xs:string"/>
+	<!-- Montant taxable (montant HT) -->
+	<xs:element name="FMOA_MNT_TAXE" type="xs:string"/>
+	<!-- Montant taxe (montant TVA) -->
+	<xs:element name="FMOA_MNT_TOTAL" type="xs:string"/>
+	<!-- Montant total (montant TTC) -->
+	<xs:element name="FMOA_MNT_DU" type="xs:string"/>
+	<!-- Montant dû/payable -->
+	<xs:element name="FMOA_MNT_ACOMPTE" type="xs:string"/>
+	<!-- Montant de l'acompte -->
+	<xs:element name="FMOA_MNT_CONSIGNES" type="xs:string"/>
+	<!-- Montant total des consignes -->
+	<xs:element name="FMOA_MNT_NET_RISTOURNABLE" type="xs:string"/>
+	<!-- Montant net ristournable (montant net HT hors taxes parafiscales et assimilées) -->
+	<xs:element name="FMOA_MNT_TOTAL_TAXES_DROITS" type="xs:string"/>
+	<!-- Montant total des taxes et droits (TVA + taxes parafiscales) -->
+	<xs:element name="FMOA_MNT_HORS_TTES_TAXES" type="xs:string"/>
+	<!-- Montant hors toutes taxes (montant excluant la TVA et les taxes parafiscales) -->
+	<xs:element name="FMOA_RECAP_TX_TVA_1" type="xs:string"/>
+	<!-- Récapitualtif taux de TVA 1 -->
+	<xs:element name="FMOA_RECAP_MNT_TVA_1" type="xs:string"/>
+	<!-- Récapitualtif montant de TVA 1 -->
+	<xs:element name="FMOA_RECAP_MNT_TAXABLE_1" type="xs:string"/>
+	<!-- Récapitualtif montant taxable 1 -->
+	<xs:element name="FMOA_RECAP_TX_TVA_2" type="xs:string"/>
+	<!-- Récapitualtif taux de TVA 2 -->
+	<xs:element name="FMOA_RECAP_MNT_TVA_2" type="xs:string"/>
+	<!-- Récapitualtif montant de TVA 2 -->
+	<xs:element name="FMOA_RECAP_MNT_TAXABLE_2" type="xs:string"/>
+	<!-- Récapitualtif montant taxable 2 -->
+	<xs:element name="FMOA_RECAP_TX_TVA_3" type="xs:string"/>
+	<!-- Récapitualtif taux de TVA 3 -->
+	<xs:element name="FMOA_RECAP_MNT_TVA_3" type="xs:string"/>
+	<!-- Récapitualtif montant de TVA 3 -->
+	<xs:element name="FMOA_RECAP_MNT_TAXABLE_3" type="xs:string"/>
+	<!-- Récapitualtif montant taxable 3 -->
+	<xs:element name="FMOA_RECAP_TX_TVA_4" type="xs:string"/>
+	<!-- Récapitualtif taux de TVA 4 -->
+	<xs:element name="FMOA_RECAP_MNT_TVA_4" type="xs:string"/>
+	<!-- Récapitualtif montant de TVA 4 -->
+	<xs:element name="FMOA_RECAP_MNT_TAXABLE_4" type="xs:string"/>
+	<!-- Récapitualtif montant taxable 4 -->
+	<xs:element name="FMOA_RECAP_TX_TVA_5" type="xs:string"/>
+	<!-- Récapitualtif taux de TVA 5 -->
+	<xs:element name="FMOA_RECAP_MNT_TVA_5" type="xs:string"/>
+	<!-- Récapitualtif montant de TVA 5 -->
+	<xs:element name="FMOA_RECAP_MNT_TAXABLE_5" type="xs:string"/>
+	<!-- Récapitualtif montant taxable 5 -->
+	<!--  -->
+	<xs:element name="FALC">
+		<!-- Récapitulatif charges -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FALC_ID" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="FALC_NO_LIGNE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FALC_QUALIFIANT_REMISE_CHARGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FALC_CODE_REMISE_CHARGE" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FALC_CODE_SERVICE_PARTICULIER" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FALC_LIBELLE_1" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FALC_LIBELLE_2" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="FALC_MONTANT" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<xs:element name="FALC_ID" type="xs:string"/>
+	<!-- Identifiant enregistrement. Constante "FALC". -->
+	<xs:element name="FALC_NO_LIGNE" type="xs:string"/>
+	<!-- Numéro séquentiel de ligne de remise -->
+	<xs:element name="FALC_QUALIFIANT_REMISE_CHARGE" type="xs:string"/>
+	<!-- Code remise / charge -->
+	<xs:element name="FALC_CODE_REMISE_CHARGE" type="xs:string"/>
+	<!-- Code EAN remise / charge -->
+	<xs:element name="FALC_CODE_SERVICE_PARTICULIER" type="xs:string"/>
+	<!-- Code service particulier -->
+	<xs:element name="FALC_LIBELLE_1" type="xs:string"/>
+	<!-- Libellé remise / charge (1/2) -->
+	<xs:element name="FALC_LIBELLE_2" type="xs:string"/>
+	<!-- Libellé remise / charge (2/2) -->
+	<xs:element name="FALC_MONTANT" type="xs:string"/>
+	<!-- Montant de remise/charge -->
+</xs:schema>
