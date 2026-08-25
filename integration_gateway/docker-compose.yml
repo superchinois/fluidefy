@@ -28,7 +28,9 @@ services:
       retries: 10
 
   api:
-    build: .
+    build:
+      context: ..
+      dockerfile: integration_gateway/Dockerfile
     container_name: fluidefy-api
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000
     environment:
@@ -49,7 +51,9 @@ services:
         condition: service_healthy
 
   worker:
-    build: .
+    build:
+      context: ..
+      dockerfile: integration_gateway/Dockerfile
     container_name: fluidefy-worker
     command: celery -A app.workers.tasks.celery_app worker --loglevel=info
     environment:

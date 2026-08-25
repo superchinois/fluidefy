@@ -1,0 +1,26 @@
+# Git
+.git
+.gitignore
+
+# Python / virtualenv / caches
+.venv
+__pycache__
+*.py[cod]
+*.egg-info
+.ruff_cache
+.pytest_cache
+.mypy_cache
+
+# Secrets
+.env
+
+# Sample Fluidefy order data (customer data)
+ORDERS-*.xml
+
+# Docs (not needed in the image)
+README.md
+implementation.md
+LICENSE
+
+# Logs
+*.log

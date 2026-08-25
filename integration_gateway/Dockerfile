@@ -7,10 +7,20 @@ RUN apt-get update \
 
 WORKDIR /app
 
-COPY requirements.txt .
+# Copy requirements first for better layer caching.
+# Build context is the repository root (see docker-compose.yml).
+COPY integration_gateway/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+# Copy the application code.
+COPY integration_gateway/ /app/
+
+# The xsdata dataclasses in app/fluidefy_models/ are gitignored and therefore
+# absent from fresh checkouts. Generate them at build time from the XSD schemas.
+# generate_models.py computes the XSD path as ROOT.parent.parent / "XSD", so we
+# stage the schemas at /XSD. They are only needed for generation, not at runtime.
+COPY XSD/ /XSD/
+RUN python scripts/generate_models.py && rm -rf /XSD
 
 EXPOSE 8000
 
