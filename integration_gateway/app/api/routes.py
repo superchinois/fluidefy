@@ -1,11 +1,24 @@
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import HTMLResponse
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from ..schemas.order import OrderNotification, TaskAcceptedResponse
 from ..workers.tasks import celery_app
 from ..database import SessionLocal
 from ..models.staging import StagingOrder
 
 router = APIRouter(prefix="/api/v1")
+
+# Arrival times are stored as naive UTC; display them in Reunion Island time.
+_REUNION_TZ = ZoneInfo("Indian/Reunion")
+
+
+def _format_arrival(dt) -> str:
+    """Format a naive-UTC arrival datetime as a Reunion Island local time string."""
+    if dt is None:
+        return ""
+    local = dt.replace(tzinfo=timezone.utc).astimezone(_REUNION_TZ)
+    return local.strftime("%Y-%m-%d %H:%M:%S")
 
 
 # CSS shared by the monitor page.
@@ -28,7 +41,7 @@ def _render_table(rows) -> str:
     else:
         body = "\n".join(
             f"<tr><td>{r.id}</td><td>{r.file_name}</td>"
-            f"<td>{r.date_of_arrival}</td><td>{_status_badge(r.processing_status)}</td>"
+            f"<td>{_format_arrival(r.date_of_arrival)}</td><td>{_status_badge(r.processing_status)}</td>"
             f"<td class=\"error\">{r.error_log or ''}</td></tr>"
             for r in rows
         )
@@ -54,7 +67,7 @@ def _monitor_page(rows) -> HTMLResponse:
 </head>
 <body>
   <h1>Fluidefy → Odoo Task Monitor</h1>
-  <p><a href="/monitor">Refresh</a></p>
+  <p><a href="/monitor">Refresh</a> · Times shown in <strong>Indian/Reunion</strong> (UTC+4)</p>
   <table>
     <thead>
       <tr><th>ID</th><th>File name</th><th>Arrival time</th><th>Status</th><th>Error log</th></tr>
