@@ -43,6 +43,9 @@ class ParsedOrder:
     buyer_city: str
     buyer_zip: str
     buyer_country: str
+    # Earliest requested delivery date (HDDT_DATE_HEURE_LIVRAISON_PLUS_TOT),
+    # formatted as YYYY-MM-DD. Used in the trailing order note line.
+    delivery_date: str = ""
     lines: list[OrderLine] = field(default_factory=list)
 
 
@@ -58,6 +61,16 @@ def _to_float(value: Optional[str], default: float = 0.0) -> float:
         return float(value.replace(",", "."))
     except ValueError:
         return default
+
+
+def _format_delivery_date(raw: Optional[str]) -> str:
+    """Convert ``HDDT_DATE_HEURE_LIVRAISON_PLUS_TOT`` (YYYYMMDDHHMM) to YYYY-MM-DD."""
+    if not raw:
+        return ""
+    date_part = raw[:8]
+    if len(date_part) != 8 or not date_part.isdigit():
+        return raw  # unexpected format: fall back to the raw value
+    return f"{date_part[0:4]}-{date_part[4:6]}-{date_part[6:8]}"
 
 
 def _extract_line(dlin: Dlin) -> OrderLine:
@@ -99,6 +112,9 @@ def parse_orders(orders: Orders) -> list[ParsedOrder]:
             buyer_city=_val(hnby.hnby_ville_acheteur) or "",
             buyer_zip=_val(hnby.hnby_code_postal_acheteur) or "",
             buyer_country=_val(hnby.hnby_pays_acheteur) or "",
+            delivery_date=_format_delivery_date(
+                _val(entete.hddt.hddt_date_heure_livraison_plus_tot)
+            ),
         )
         parsed.lines = [_extract_line(ligne.dlin) for ligne in order.lignes.ligne]
         result.append(parsed)
@@ -121,6 +137,15 @@ def to_odoo_sale_order(parsed: ParsedOrder) -> dict:
         }
         for line in parsed.lines
     ]
+
+    # Append a note line as the LAST line, carrying the order number and the
+    # earliest requested delivery date.
+    order_line.append(
+        {
+            "display_type": "line_note",
+            "name": f"N. CDE {parsed.order_number} - LIVRAISON LE {parsed.delivery_date}",
+        }
+    )
 
     return {
         "partner_id": None,  # resolved by caller
