@@ -36,15 +36,14 @@ services:
     container_name: fluidefy-api
     restart: unless-stopped
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    # Inject all variables from .env at container creation (no rebuild needed).
+    # Values in `environment` below take precedence over .env entries.
+    env_file:
+      - .env
     environment:
+      # Compose-internal hostnames always win, even if .env points elsewhere.
       DATABASE_URL: postgresql://fluidefy:fluidefy@postgres:5432/fluidefy_staging
       REDIS_URL: redis://redis:6379/0
-      ODOO_URL: ${ODOO_URL:-http://localhost:8069}
-      ODOO_DB: ${ODOO_DB:-my_odoo_database}
-      ODOO_USERNAME: ${ODOO_USERNAME:-admin}
-      ODOO_APIKEY: ${ODOO_APIKEY:-your_odoo_password_or_api_key}
-      ODOO_SO_TAGS_ID: ${ODOO_SO_TAGS_ID:-0}
-      ODOO_SO_USER_ID: ${ODOO_SO_USER_ID:-0}
     ports:
       - "8000:8000"
     depends_on:
@@ -60,15 +59,14 @@ services:
     container_name: fluidefy-worker
     restart: unless-stopped
     command: celery -A app.workers.tasks.celery_app worker --loglevel=info
+    # Inject all variables from .env at container creation (no rebuild needed).
+    # Values in `environment` below take precedence over .env entries.
+    env_file:
+      - .env
     environment:
+      # Compose-internal hostnames always win, even if .env points elsewhere.
       DATABASE_URL: postgresql://fluidefy:fluidefy@postgres:5432/fluidefy_staging
       REDIS_URL: redis://redis:6379/0
-      ODOO_URL: ${ODOO_URL:-http://localhost:8069}
-      ODOO_DB: ${ODOO_DB:-my_odoo_database}
-      ODOO_USERNAME: ${ODOO_USERNAME:-admin}
-      ODOO_APIKEY: ${ODOO_APIKEY:-your_odoo_password_or_api_key}
-      ODOO_SO_TAGS_ID: ${ODOO_SO_TAGS_ID:-0}
-      ODOO_SO_USER_ID: ${ODOO_SO_USER_ID:-0}
     depends_on:
       redis:
         condition: service_healthy
