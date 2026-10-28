@@ -16,6 +16,69 @@ import odoo_client
 celery_app = Celery("tasks", broker=settings.REDIS_URL, backend=settings.REDIS_URL)
 
 
+def find_existing_sale_order(api, order_number: str):
+    """Return the Odoo ``sale.order`` already created for a Fluidefy order number.
+
+    Retries re-run the sync for a payload that may have been partially applied,
+    so an order created before an unrelated line failed has to be detected here
+    instead of being created a second time. ``client_order_ref`` carries the
+    Fluidefy order number (see ``fluidefy_mapper.to_odoo_sale_order``).
+
+    Returns the matching ``{"id": ..., "name": ...}`` dict, or None.
+    """
+    if not order_number:
+        return None
+
+    matches = api.extract_from_odoo(
+        "sale.order",
+        [("client_order_ref", "=", order_number)],
+        ["name"],
+    )
+    return matches[0] if matches else None
+
+
+def create_sale_order(api, parsed):
+    """Ensure one parsed order exists in Odoo, exactly once.
+
+    Returns ``(created_id, existing_order)`` where exactly one of the two is
+    None: either the order was just created, or it was already in Odoo and was
+    left untouched (which is what makes a retry safe).
+    """
+    existing = find_existing_sale_order(api, parsed.order_number)
+    if existing:
+        return None, existing
+
+    # Resolve the buyer partner (HNBY) in Odoo by its barcode (GLN);
+    # fail the order if it does not exist rather than creating it silently.
+    partner_id = resolve_partner_id(api, parsed.buyer_code)
+
+    # Resolve each order line's Odoo product.product id from the
+    # identifiers carried in the XML (DLIN codes / barcode).
+    resolve_order_line_product_ids(api, parsed)
+
+    # Build the sale.order payload from the parsed order
+    sale_order_payload = to_odoo_sale_order(parsed)
+    sale_order_payload['partner_id'] = partner_id
+    # Flag the order with the configured tag and assign the responsible
+    # user (from ODOO_SO_TAGS_ID / ODOO_SO_USER_ID env vars).
+    if settings.ODOO_SO_TAGS_ID:
+        sale_order_payload['tag_ids'] = [(6, 0, [settings.ODOO_SO_TAGS_ID])]
+    if settings.ODOO_SO_USER_ID:
+        sale_order_payload['user_id'] = settings.ODOO_SO_USER_ID
+
+    return api.create_('sale.order', sale_order_payload), None
+
+
+def sync_summary(created_ids, skipped) -> str:
+    """Build the operator-facing result message for one sync run."""
+    parts = []
+    if created_ids:
+        parts.append(f"Successfully instantiated Odoo order object(s) ID: {created_ids}")
+    if skipped:
+        parts.append(f"Already present in Odoo, not created again: {skipped}")
+    return " | ".join(parts) or "Nothing to synchronise"
+
+
 @celery_app.task(name="tasks.process_inbound_xml")
 def process_inbound_xml(file_name: str, file_content_base64: str) -> bool:
     """
@@ -84,6 +147,9 @@ def sync_pending_order_to_odoo(staging_order_id: int) -> bool:
         db.close()
         return False
 
+    created_ids = []
+    skipped = []
+
     try:
         # 1. Decode the XML data payload out of base64 storage string
         raw_xml_bytes = base64.b64decode(order_record.file_base64)
@@ -99,41 +165,27 @@ def sync_pending_order_to_odoo(staging_order_id: int) -> bool:
         # 3. Establish connection to Odoo via odoo_client.API (JSON-RPC, lazy authentication)
         api = odoo_client.API(settings)
 
-        created_ids = []
         for parsed in parsed_orders:
-            # Resolve the buyer partner (HNBY) in Odoo by its barcode (GLN);
-            # fail the order if it does not exist rather than creating it silently.
-            partner_id = resolve_partner_id(api, parsed.buyer_code)
-
-            # Resolve each order line's Odoo product.product id from the
-            # identifiers carried in the XML (DLIN codes / barcode).
-            resolve_order_line_product_ids(api, parsed)
-
-            # Build the sale.order payload from the parsed order
-            sale_order_payload = to_odoo_sale_order(parsed)
-            sale_order_payload['partner_id'] = partner_id
-            # Flag the order with the configured tag and assign the responsible
-            # user (from ODOO_SO_TAGS_ID / ODOO_SO_USER_ID env vars).
-            if settings.ODOO_SO_TAGS_ID:
-                sale_order_payload['tag_ids'] = [(6, 0, [settings.ODOO_SO_TAGS_ID])]
-            if settings.ODOO_SO_USER_ID:
-                sale_order_payload['user_id'] = settings.ODOO_SO_USER_ID
-
-            # Create the Sales Order in Odoo
-            odoo_order_id = api.create_('sale.order', sale_order_payload)
-            created_ids.append(odoo_order_id)
+            # Create the order unless it is already in Odoo (makes retries safe)
+            created_id, existing = create_sale_order(api, parsed)
+            if created_id is not None:
+                created_ids.append(created_id)
+            else:
+                skipped.append(existing.get("name") or existing.get("id"))
 
         # 4. Successful Execution Lifecycle: Update record parameters
         order_record.processing_status = "integrated"
-        order_record.error_log = f"Successfully instantiated Odoo order object(s) ID: {created_ids}"
+        order_record.error_log = sync_summary(created_ids, skipped)
         db.commit()
-        print(f"Sync complete: Database entry ID {staging_order_id} integrated to Odoo sale.order ID(s) {created_ids}")
+        print(f"Sync complete: Database entry ID {staging_order_id} integrated to Odoo sale.order ID(s) {created_ids} (skipped: {skipped})")
         return True
 
     except Exception as exc:
         db.rollback()
         # 5. Fault Isolation Lifecycle: Safely track stack frames and log failure context to the row
         error_msg = f"API Synchronization exception: {str(exc)}"
+        if created_ids or skipped:
+            error_msg += f" (created before the failure: {created_ids}, already in Odoo: {skipped})"
         print(f"ERROR: {error_msg}")
         
         order_record.processing_status = "failed"
