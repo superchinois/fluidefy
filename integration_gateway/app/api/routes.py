@@ -1,4 +1,6 @@
-from fastapi import APIRouter, HTTPException, status
+import html
+
+from fastapi import APIRouter, HTTPException, Request, status
 from fastapi.responses import HTMLResponse
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
@@ -48,9 +50,16 @@ def _render_table(rows) -> str:
     return body
 
 
-def _monitor_page(rows) -> HTMLResponse:
+def _monitor_page(rows, refresh_url: str) -> HTMLResponse:
+    """Render the monitor page.
+
+    ``refresh_url`` is the path the page was requested on, so the Refresh link
+    always targets the real route (which lives under the API prefix) instead of
+    a hardcoded path that may not exist.
+    """
     body = _render_table(rows)
-    html = f"""<!DOCTYPE html>
+    refresh_href = html.escape(refresh_url, quote=True)
+    page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -67,7 +76,7 @@ def _monitor_page(rows) -> HTMLResponse:
 </head>
 <body>
   <h1>Fluidefy → Odoo Task Monitor</h1>
-  <p><a href="/monitor">Refresh</a> · Times shown in <strong>Indian/Reunion</strong> (UTC+4)</p>
+  <p><a href="{refresh_href}">Refresh</a> · Times shown in <strong>Indian/Reunion</strong> (UTC+4)</p>
   <table>
     <thead>
       <tr><th>ID</th><th>File name</th><th>Arrival time</th><th>Status</th><th>Error log</th></tr>
@@ -78,7 +87,7 @@ def _monitor_page(rows) -> HTMLResponse:
   </table>
 </body>
 </html>"""
-    return HTMLResponse(content=html)
+    return HTMLResponse(content=page)
 
 
 @router.get(
@@ -86,7 +95,7 @@ def _monitor_page(rows) -> HTMLResponse:
     response_class=HTMLResponse,
     include_in_schema=False,
 )
-def monitor_orders():
+def monitor_orders(request: Request):
     """Render a simple HTML page listing the state of all staged orders."""
     db = SessionLocal()
     try:
@@ -95,7 +104,7 @@ def monitor_orders():
             .order_by(StagingOrder.date_of_arrival.desc())
             .all()
         )
-        return _monitor_page(rows)
+        return _monitor_page(rows, request.url.path)
     finally:
         db.close()
 
