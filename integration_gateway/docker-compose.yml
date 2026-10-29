@@ -42,7 +42,10 @@ services:
       - .env
     environment:
       # Compose-internal hostnames always win, even if .env points elsewhere.
-      DATABASE_URL: postgresql://fluidefy:fluidefy@postgres:5432/fluidefy_staging
+      # The driver is named explicitly: SQLAlchemy 2.1 defaults a bare
+      # postgresql:// URL to psycopg (v3), but this image installs
+      # psycopg2-binary, so create_engine() would fail on import.
+      DATABASE_URL: postgresql+psycopg2://fluidefy:fluidefy@postgres:5432/fluidefy_staging
       REDIS_URL: redis://redis:6379/0
     ports:
       - "8000:8000"
@@ -65,7 +68,8 @@ services:
       - .env
     environment:
       # Compose-internal hostnames always win, even if .env points elsewhere.
-      DATABASE_URL: postgresql://fluidefy:fluidefy@postgres:5432/fluidefy_staging
+      # Explicit driver, as above: psycopg2-binary is what the image installs.
+      DATABASE_URL: postgresql+psycopg2://fluidefy:fluidefy@postgres:5432/fluidefy_staging
       REDIS_URL: redis://redis:6379/0
     depends_on:
       redis:

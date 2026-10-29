@@ -1,7 +1,9 @@
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = "postgresql://user:password@localhost:5432/fluidefy_staging"
+    # Driver is named explicitly: SQLAlchemy 2.1 defaults a bare postgresql://
+    # URL to psycopg (v3), yet only psycopg2-binary is installed (requirements.txt).
+    DATABASE_URL: str = "postgresql+psycopg2://user:password@localhost:5432/fluidefy_staging"
     REDIS_URL: str = "redis://localhost:6373/0"
     ODOO_URL: str = "http://localhost:8069"
     ODOO_DB: str = "my_odoo_database"
